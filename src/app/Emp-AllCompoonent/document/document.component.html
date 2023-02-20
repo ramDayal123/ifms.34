@@ -1,0 +1,137 @@
+<section class="content">
+    <div class="p-4">
+        <div class="p-3">
+            <legend class="mb-3"> Employee Documents</legend>
+            <form [formGroup]="EmpDocument" (click)=" OnSubmit()">
+             
+                <div class="Row">
+                    
+                    <table class="table table-border">
+                        <thead>
+                            <tr>
+                                <th>Sr no</th>
+                                <th>Documents Types</th>
+                                <th>Description</th>
+                                <th>Choose File</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Documents Types </mat-label>
+                                        <mat-select matNativeControl   formControlName="documennt" [ngClass]="{'is-invalid':submitted && EmpDocument.controls['documennt'].errors}">
+                                            <mat-option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+                                              {{mst.TYPE_NAME}}
+                                            </mat-option>
+                                          </mat-select>
+                                          <mat-hint *ngIf="submitted && EmpDocument.controls['documennt'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && EmpDocument.controls['documennt'].errors['required']">
+                                                Please Enter Name
+                                            </div>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                    <div *ngIf="submitted && EmpDocument.controls['documennt'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && EmpDocument.controls['documennt'].errors['required']">
+                                            Please Enter Annual Increment Opted Date
+                                        </div>
+                                    </div>
+
+                                
+                                </td>
+                                <td>
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Description</mat-label>
+                                        <input matInput formControlName="mname" formControlName="Description">
+
+                                        <mat-hint *ngIf="submitted && EmpDocument.controls['Description'].errors"
+                                        class="text-danger">
+                                        <div
+                                            *ngIf="submitted && EmpDocument.controls['Description'].errors['required']">
+                                            Please Enter Description
+                                        </div>
+                                    </mat-hint>
+
+                                    </mat-form-field>
+                                
+                                </td>
+
+                                <td>
+                                    <!-- <input type="file" class="form-control" formControlName="file" /> -->
+                                    
+                                    <div (click)="uploadFile.click()" class="mt-2">
+                                        <button type="button" class="btn btn-secondary ms-2" mat-raised-button color="secondary">Choose File</button>
+                                        <input type="file" #uploadFile (change)="selectFile($event)" style="display: none" formControlName="file">
+                                        <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn bg-light-green waves-effect ms-2" mat-raised-button
+                                    >+ Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+        
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 col-xxl-2">
+    
+                        <div class="float-left mt-2 ">
+                            <h4>Assigened to *</h4>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+    
+                        <mat-form-field class="w-100" > 
+                            <mat-label>Authority Name</mat-label>
+                            <select matNativeControl id="assigened">
+                                <option value="">--Please Select Assigened--</option>
+                                <option value="1">Assigned</option>
+                            </select>
+                        </mat-form-field>
+                    </div>
+                </div>
+    
+    
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 col-xxl-2">
+    
+                        <div class="float-left mt-2 ">
+                            <h4>Remark *</h4>
+    
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <mat-form-field class="w-100" >
+                            <mat-label>Remark</mat-label>
+                            <input matInput  id="remark" rows="1">
+                            
+                        </mat-form-field>
+                    </div>
+                </div>
+    
+              
+                <!-- <div class="text-center mt-4">
+                    <button class="btn btn-primary waves-effect ms-2" mat-raised-button
+                    (click)=" OnSubmit()">  Save As Draft </button>
+                    <button type="button" class="btn btn-primary ms-2" mat-raised-button> Next &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                  </div> -->
+                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+            <!-- <app-emp-button></app-emp-button> -->
+            </form>
+
+      
+
+        </div>
+    </div>
+
+
+</section>

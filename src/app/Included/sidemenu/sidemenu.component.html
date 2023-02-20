@@ -1,0 +1,86 @@
+<div class="light_grey_bg" id="mySidenav1">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-12 col-xl-12 col-xxl-12 pt-4">   
+        <nav class="sidebar sidebar-offcanvas pe-3 " id="sidebar">
+            <button onclick="openMenu()"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon>menu</mat-icon>
+					  </button>
+          <div class="px-3">
+            <div class="input-group">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput placeholder="Search by name">
+                
+              </mat-form-field>
+                
+                  <!-- <button class="btn btn-primary Search-btn-position btn-sm" mat-raised-button color="primary">Search</button> -->
+                
+              </div>   
+              </div>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                  <mat-icon class="menu-icon me-3">assessment</mat-icon>
+                  <span class="menu-title">ESS</span>
+                  <i class="fa-solid fa-chevron-right"></i> 
+                </a>
+                <div class="collapse" id="ui-basic">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Employee Information </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Leaves</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Deduction</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Reimbursements</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Loans</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Advance Request</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Tax</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                  <mat-icon class="menu-icon me-3">assessment</mat-icon>
+                  <span class="menu-title">Master data management </span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <div class="collapse" id="form-elements">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+                  <mat-icon class="menu-icon me-3">assessment</mat-icon>
+                  <span class="menu-title">Budget management</span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <div class="collapse" id="charts">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                  <mat-icon class="menu-icon me-3">assessment</mat-icon>
+                  <span class="menu-title">Disbursement engine</span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                <div class="collapse" id="tables">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+            </ul>
+            <a  class="closebtn d-lg-none" (click)="closeMenu()">&times;</a>
+          </nav>
+    
+    </div>
+</div>
+<script>
+   function openMenu() {
+    document.getElementById("mySidenav1").style.display = "none";
+  }
+</script>

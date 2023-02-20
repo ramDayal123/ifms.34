@@ -1,0 +1,113 @@
+
+ <!-- ======= Sidebar ======= -->
+ <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer opened class="example-sidenav" mode="side">
+    <div class="sidebar">
+      <aside>
+          <ul class="sidebar-nav" id="sidebar-nav">
+     
+           <!-- <li class="nav-item">
+             <a class="nav-link " routerLink="/employe_registration">
+               <i class="bi bi-grid"></i>
+               <span>Employee Registration</span>
+             </a>
+           </li> -->
+           
+           <!-- End Dashboard Nav -->
+     
+           <li class="nav-item">
+             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" routerLink="#">
+               <i class="bi bi-menu-button-wide"></i><span>Employee Registration</span><i class="fa-solid fa-chevron-down ms-auto"></i>
+             </a>
+             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+               <li>
+                 <a routerLink="/employee-details">
+                   <i class="bi bi-circle"></i><span>Employee Personal Details</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-accordion.html">
+                   <i class="bi bi-circle"></i><span>Employee Service</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-badges.html">
+                   <i class="bi bi-circle"></i><span>Employee Address</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-breadcrumbs.html">
+                  <i class="bi bi-circle"></i><span>Employee Family Details</span>
+                   
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-buttons.html">
+                  <i class="bi bi-circle"></i><span>Employee Identification</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-cards.html">
+                   <i class="bi bi-circle"></i><span>Employee Bank Details</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-carousel.html">
+                   <i class="bi bi-circle"></i><span>Employee Bank Details</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-list-group.html">
+                   <i class="bi bi-circle"></i><span>Employee Document</span>
+                 </a>
+               </li>
+               <li>
+                 <a routerLink="components-modal.html">
+                   <i class="bi bi-circle"></i><span>Modal</span>
+                 </a>
+               </li>
+             
+             </ul>
+           </li><!-- End Components Nav -->
+     
+        
+     
+         
+         
+     
+    
+     
+        
+     
+           <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" routerLink="/emp-verification">
+              <i class="bi bi-gem">
+              </i><span>Employee Verification</span>
+              <!-- <i class="fa-solid fa-chevron-down ms-auto"></i> -->
+            </a>
+            <!-- <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="icons-bootstrap.html">
+                  <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                </a>
+              </li>
+            </ul> -->
+           </li>  
+        
+           <!-- End Blank Page Nav -->
+     
+         </ul>
+     
+       </aside>
+     </div>
+  </mat-drawer>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <div class="minheight">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+<!-- End Sidebar-->
+  

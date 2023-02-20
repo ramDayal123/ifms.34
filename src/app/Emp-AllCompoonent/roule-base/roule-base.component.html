@@ -1,0 +1,57 @@
+
+
+
+
+<div class="content-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp;
+                <a routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+           
+            <li aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">Roles</li>
+        </ol>
+    </nav>
+</div>
+<div class="content-wrapper card">
+    <div class="row">
+        <div class="col-5">
+            <h3>Select Role</h3>
+        </div>
+        <div class="col-7">
+           
+        </div>
+    </div> 
+    <div class="row">
+  
+        <!-- <div class="col-md-3 col-sm-3 col-xl-3 col-lg-3 col-xxl-3">
+            <div class="card role-card">
+                <div class="d-flex justify-content-center" (click)="setToken(auditorToken,hodlist)">HOD</div>              
+            </div>
+        </div> -->
+
+        <div class="col-md-3 col-sm-3 col-xl-3 col-lg-3 col-xxl-3">
+            <div class="card role-card">
+                <div class="d-flex justify-content-center" (click)="setToken('maker', makerToken, makerDataList)">Maker</div>              
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xl-3 col-lg-3 col-xxl-3">
+            <div class="card role-card">
+                <div class="d-flex justify-content-center" (click)="setToken('checker', checkerToken,checkerDataList)">Checker</div>                
+            </div>
+        </div> 
+        <div class="col-md-3 col-sm-3 col-xl-3 col-lg-3 col-xxl-3">
+            <div class="card role-card">
+                <div class="d-flex justify-content-center" (click)="setToken('approver', approverToken,approverDataList)">Approver</div>            
+            </div>
+           </div>      
+        </div>  
+</div>
+
+
+
+
+ 
+

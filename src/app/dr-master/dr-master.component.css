@@ -1,0 +1,30 @@
+tr.mat-header-row th, .mat-header-cell
+{
+    background: #F5F5FF !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    color: #231E60 !important;
+    font-weight: 600 !important;
+}
+
+
+.mat-form-field-wrapper {
+padding-bottom: 0px; 
+}
+.box{
+    padding: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+::ng-deep .mat-snack-bar-container {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: 8.5rem 0 !important;
+    max-width: 33vw;
+    min-width: 344px;
+    padding: 14px 16px;
+    min-height: 48px;
+    transform-origin: center;
+    background-color: #ffffff;
+    color: #000;
+}

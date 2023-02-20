@@ -1,0 +1,121 @@
+<section class="content">
+    <div class="p-4">
+        <div class="p-3">
+            <legend class="mb-3"> Employee's Bank Details</legend>
+            <form [formGroup]="bankDetails" (ngSubmit)="OnSubmit()">
+                
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Account Type</mat-label>
+                            <input matInput formControlName="Account_Type" [ngClass]="{'is-invalid':submitted && bankDetails.controls['Account_Type'].errors}"  (keypress)="this.global.keyPressNumbers($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && bankDetails.controls['Account_Type'].errors"
+                                class="text-danger" >
+                                <div
+                                    *ngIf="submitted && bankDetails.controls['Account_Type'].errors['required']">
+                                    Please Enter Account Type
+                                </div>
+                               </mat-hint>
+                        </mat-form-field>
+                        
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Bank Account Number</mat-label>
+                            <input matInput formControlName="BankAccount" [ngClass]="{'is-invalid':submitted && bankDetails.controls['BankAccount'].errors}"  (keypress)="this.global.keyPressNumbers($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && bankDetails.controls['BankAccount'].errors"
+                                class="text-danger" >
+                                <div
+                                    *ngIf="submitted && bankDetails.controls['BankAccount'].errors['required']">
+                                    Please Enter Bank Account Number
+                                </div>
+                               </mat-hint>
+                        </mat-form-field>
+                        
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>IFSC Code </mat-label>
+                            <input matInput  formControlName="ifscCode"   [ngClass]="{'is-invalid':submitted && bankDetails.controls['ifscCode'].errors}" (keypress)="this.global.keyPressAlphaNumeric($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && bankDetails.controls['ifscCode'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && bankDetails.controls['ifscCode'].errors['required']">
+                                Please Enter Enter IFSC Code
+                            </div>
+                           </mat-hint>
+                        
+                        </mat-form-field>
+                       
+                    </div>
+
+
+
+                 
+                </div>
+                <div class="row mt-2">
+                    
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Bank Name</mat-label>
+                        <mat-select matNativeControl  formControlName="bankName" (selectionChange)="getBankBranch($event)">
+                            <mat-option *ngFor="let mst of BankData" value={{mst.BANK_ID}}> {{mst.BANK_NAME_EN}} </mat-option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && bankDetails.controls['bankName'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && bankDetails.controls['bankName'].errors['required']">
+                                Please Enter Bank Name
+                            </div>
+                           </mat-hint>
+
+
+                    </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Branch Name</mat-label>
+                            <mat-select matNativeControl  formControlName="branchName">
+                                <mat-option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}> {{mst.BRANCH_NAME_EN}} </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && bankDetails.controls['branchName'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && bankDetails.controls['branchName'].errors['required']">
+                                Please Enter Branch Name
+                            </div>
+                           </mat-hint>
+
+
+                        </mat-form-field>
+                       
+                    </div>
+
+                 
+
+                 
+                </div>
+
+            
+
+
+              <!-- <div class="text-center mt-4">
+                <button class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+              </div> -->
+              <!-- <div class="text-center mt-4">
+                <button class="btn btn-primary ms-2 waves-effect ms-2" mat-raised-button
+                (click)=" OnSubmit()">Save As Draft</button>
+               
+              </div> -->
+
+                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+             <!-- <app-emp-button></app-emp-button> -->
+            </form>
+        </div>
+    </div>
+
+
+</section>

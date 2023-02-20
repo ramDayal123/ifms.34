@@ -1,0 +1,776 @@
+<div class="content-wrapper">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp;
+                <a routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a routerlink="/employee-self-service" ng-reflect-router-link="/employee-self-service"
+                    href="/employee-self-service">Menu</a>
+            </li>
+            <li aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">Profile</li>
+        </ol>
+    </nav>
+</div>
+<mat-stepper labelPosition="bottom" #stepper linear class="{{ 'last-edited-step-' + stepper.selectedIndex }}" >
+    <!-- <ng-template matStepperIcon="edit">
+		<mat-icon>person</mat-icon>
+	</ng-template> -->
+
+    <!-- changed step icons -->
+    <!-- <ng-template matStepperIcon="home">
+		<mat-icon>account_circle</mat-icon>
+	</ng-template>
+	<ng-template matStepperIcon="family">
+		<mat-icon>group</mat-icon>
+	</ng-template>
+	<ng-template matStepperIcon="settings">
+		<mat-icon>account_balance</mat-icon>
+	</ng-template>
+	<ng-template matStepperIcon="file">
+		<mat-icon>calculate</mat-icon>
+	</ng-template>
+	<ng-template matStepperIcon="sunny">
+		<mat-icon>account_balance</mat-icon>
+	</ng-template>
+	<ng-template matStepperIcon="last">
+		<mat-icon>inventory</mat-icon>
+	</ng-template> -->
+
+    <mat-step [stepControl]="firstFormGroup" state="home">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Profile</ng-template>
+        <div>
+            <mat-accordion class="example-headers-align accordion">
+                <mat-expansion-panel class="mb-3 card_accordion" [expanded]="step === 0" (opened)="setStep(0)" >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Personal Details
+                    </mat-panel-title>                   
+                  </mat-expansion-panel-header>
+                  <div class="content-wrapper">
+                    <div class="row">
+
+
+                        <div class="alert alert-danger" role="alert" *ngIf="showerror">
+                            <strong>Error occurred :- </strong>{{error}}
+                          </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                        #fileInput (change)="uploadFile($event)" />
+
+                                </div>
+                             
+                                <div class="avatar-preview">
+                                    <div id="imagePreview"
+                                        [style.backgroundImage]="'url('+ imageUrl +')'"> 
+                                    </div>
+                                </div>
+                                <button class="editbutton"
+                                    (click)="fileInput.click()"><mat-icon>edit</mat-icon></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Janadhaar Number</span>
+                                <label>{{Personaldetail?.janadharId}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Employee Name</span>
+                                <label>{{Personaldetail?.aadharRefNo}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Gender</span>
+                                <label>{{Personaldetail?.genderName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Date of Birth</span>
+                                <label>{{dateOfBirth}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Height</span>
+                                <label>{{Personaldetail?.height}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Identification Mark</span>
+                                <label>{{Personaldetail?.identificationMarks}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Father's Name</span>
+                                <label>{{Personaldetail?.fatherName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Mother's Name</span>
+                                <label>{{Personaldetail?.motherName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Martial Status</span>
+                                <label>{{Personaldetail?.maritalStatus}}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Spouse name</span>
+                                <label>{{Personaldetail?.spouseName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Disabled</span>
+                                <label>{{Personaldetail?.disable}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Type of Disability</span>
+                                <label>{{Personaldetail?.disabilityId}}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Percentage of Disability</span>
+                                <label>{{Personaldetail?.disabilityPercent}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Blood Group</span>
+                                <label>{{Personaldetail?.bloodGrpName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Email Id</span>
+                                <label>{{Personaldetail?.emailId}}</label>
+                            </div>
+                        </div>
+                  
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <mat-form-field class="w-100">
+                                <mat-label> Mobile No  </mat-label>
+                                <input matInput placeholder="Placeholder" value="{{Personaldetail?.mobileNo}}">
+                              
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Nationality</span>
+                                <label>{{Personaldetail?.bloodGrpName}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Religion</span>
+                                <label>{{Personaldetail?.religionCode}}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Pan Number</span>
+                                <label>{{Personaldetail?.pan}}</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                            <div>
+                                <span>Adhaar Number</span>
+                                <label>{{Personaldetail?.aadharRefNo}}</label>
+                            </div>
+                        </div>
+                     
+                    </div>                   
+                </div>
+              
+                  <mat-action-row>
+                    <button class="btn btn-primary  ms-2" mat-raised-button
+                    color="primary" (click)="nextStep()">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel class="mb-3 card_accordion" [expanded]="step === 1" (opened)="setStep(1)">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Service Details
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                      Type the country name
+                      <mat-icon>map</mat-icon>
+                    </mat-panel-description> -->
+                  </mat-expansion-panel-header>
+              
+                  <div class="content-wrapper">
+                    <form [formGroup]="Empolyment_Details" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Gazetted?</span>
+                                    <label>Yes</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">                                        
+                                <div>
+                                    <span>Parent Department</span>
+                                    <label>{{ServiceDetails?.employeeCode}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Current Department</span>
+                                    <label>{{Personaldetail?.deptName}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">                                        
+                                <div>
+                                    <span>Current Designation</span>
+                                    <label>{{Personaldetail?.desgDescName}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Current Office Address</span>
+                                    <label>{{Personaldetail?.officeAdress}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">                                        
+                                <div>
+                                    <span>Appointment Order No </span>
+                                    <label>{{Personaldetail?.appointOrdNum}}</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Apppointment  Order Date </span>
+                                    <label>07/10/1983</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">                                        
+                                <div>
+                                    <span>Order Issuing Authority/Office </span>
+                                    <label>DTA</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Apppointment Authority </span>
+                                    <label>DTA</label>
+                                </div>                                       
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Date of Joining Regular Service </span>
+                                    <label>07/10/1983</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Date of Present designation </span>
+                                    <label>07/10/1983</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Date of Joining Present DDO</span>
+                                    <label>07/10/1983</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Joining Date</span>
+                                    <label>30/03/1960</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>Date of Retirement</span>
+                                    <label>{{dateValue}}</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>PRAN No.</span>
+                                    <label>{{Personaldetail?.pranNumber}}</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>GPF No.</span>
+                                    <label>{{Personaldetail?.gpfNo}}</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>State Insurance</span>
+                                    <label>498</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>I.A.S CPNF Number</span>
+                                    <label>{{Personaldetail?.cpfNo}}</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <div>
+                                    <span>PPAN Number</span>
+                                    <label>{{Personaldetail?.ppoNo}}</label>
+                                </div>                                       
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-form-field class="w-100">
+                                    <mat-label> Foriegn Services </mat-label>
+                                    <input matInput placeholder="Placeholder" formControlName="DA">
+                                    <mat-error *ngIf="submitted && f['Income_Regime'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="f['Income_Regime'].errors?.['required']">
+                                            This feild is required
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-form-field class="w-100">
+                                    <mat-label> Foriegn Empolyer  </mat-label>
+                                    <input matInput placeholder="Placeholder" formControlName="DA">
+                                    <mat-error *ngIf="submitted && f['Income_Regime'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="f['Income_Regime'].errors?.['required']">
+                                            This feild is required
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                           
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">                                                                                
+                                <mat-form-field class="w-100">                                           
+                                    <mat-label>From-To Date</mat-label>
+                                    <mat-date-range-input [rangePicker]="FromDate">
+                                      <input matStartDate formControlName="start" placeholder="Start date">
+                                      <input matEndDate formControlName="end" placeholder="End date">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="FromDate"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #FromDate></mat-date-range-picker>
+                                    
+                                  </mat-form-field>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Income Tax Regime </mat-label>
+                                    <mat-select disableOptionCentering panelClass="myPanelClass"
+                                    formControlName="Income_Regime">
+                                    <mat-option value="one">First option</mat-option>
+                                    <mat-option value="two">Second option</mat-option>
+                                </mat-select>
+                                    <mat-error *ngIf="submitted && f['Date_Retirement'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="f['Date_Retirement'].errors?.['required']">
+                                            This feild is required
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                           
+                            
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-form-field class="w-100">
+                                    <mat-label> Commutation Precentage  </mat-label>
+                                    <input matInput placeholder="Placeholder" formControlName="DA">
+                                    <mat-error *ngIf="submitted && f['Income_Regime'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="f['Income_Regime'].errors?.['required']">
+                                            This feild is required
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-label> Opt for Commutation </mat-label> 
+                                    <div>
+                                    <mat-radio-button color="primary" value="1"class="mt-3">Yes</mat-radio-button>
+                                    <mat-radio-button color="primary" class="ms-3"value="2">No</mat-radio-button>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-label> Are you a Ex-Service Man ? </mat-label>
+                                    <div>
+                                        <mat-radio-button color="primary" value="1"class="mt-3">Yes</mat-radio-button>
+                                        <mat-radio-button color="primary" class="ms-3"
+                                            value="2">No</mat-radio-button>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-label> Are you getting pension from the previous military 
+                                        service? </mat-label> 
+                                    <div>
+                                        <mat-radio-button color="primary" value="1">Yes</mat-radio-button>
+                                        <mat-radio-button color="primary" class="ms-3"
+                                            value="2">No</mat-radio-button>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-label> Are you getting civil service pension?</mat-label> 
+                                    <div>
+                                        <mat-radio-button color="primary" value="1"class="mt-3">Yes</mat-radio-button>
+                                        <mat-radio-button color="primary" class="ms-3"
+                                            value="2">No</mat-radio-button>
+                                    </div>
+                                </mat-radio-group>
+                            </div>
+
+                            
+                        </div>
+                       
+                    </form>
+                </div>
+              
+                  <mat-action-row>
+                    
+                    <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStep()">Previous</button>
+                     <button class="btn btn-primary  ms-2" mat-raised-button color="primary" (click)="nextStep()">Next</button>
+                  </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="mb-3 card_accordion" [expanded]="step === 2" (opened)="setStep(2)">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Payroll Details
+                      </mat-panel-title>                    
+                    </mat-expansion-panel-header>
+                
+                    <div class="content-wrapper">
+                        <form [formGroup]="Payroll_Details" (ngSubmit)="onSubmit_PayrollDetail()">
+                            <div class="row">
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Pay Commision</span>
+                                        <label>6 th</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Grade Pay</span>
+                                        <label>23500-28700</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Basic Pay</span>
+                                        <label>65000</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Pay Level</span>
+                                        <label>7 th PC</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Pay Scale </span>
+                                        <label>23500-28700</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>DA</span>
+                                        <label>38 %</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>HRA</span>
+                                        <label>35 %</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>NPA</span>
+                                        <label>1000</label>
+                                    </div>
+                                </div>
+                              
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span>Special Pay</span>
+                                        <label>1000</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                                    <div>
+                                        <span> Personal Pay</span>
+                                        <label>1000</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                
+                    <mat-action-row>
+                        <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStep()">Previous</button>
+                        <button class="btn btn-primary  ms-2" mat-raised-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+              
+                <mat-expansion-panel class="mb-3 card_accordion" [expanded]="step === 3" (opened)="setStep(3)">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Address Details
+                    </mat-panel-title>
+                   
+                  </mat-expansion-panel-header>
+              
+                  <div class="content-wrapper">
+
+                    <form [formGroup]="Payroll_Details" (ngSubmit)="onSubmit_PayrollDetail()">
+                        <div class="row">
+                            <div class="row">
+                                <p>Permanent Address</p>
+                                <div class="col-lg-12">
+                                    <table class="table text-nowrap">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">HOUSE NO</th>
+                                                <th scope="col">ADDRESS 1</th>
+                                                <th scope="col">ADDRESS 2</th>
+                                                <th scope="col">PINCODE</th>
+                                                <th scope="col">DISTRICT</th>
+                                                <th scope="col">STATE</th>
+                                                <th scope="col">EMAIL</th>
+                                                <!-- <th scope="col">ACTION</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let obj of residenceArray">                                       
+                                        
+                                                <td>{{obj.villStreet}}</td>
+                                                <td>{{obj.wardPanchayat}}</td>
+                                                <td>{{obj.houseAddress}}</td>
+                                                <td>{{obj.pinCode}}</td>
+                                                <td>{{obj.districtId}}</td>
+                                                <td>{{obj.stateId}}</td>
+                                                <td>{{obj.emailId}}</td>
+                                                <!-- <td><button class="btn"><img src="../assets/images/edit.svg"
+                                                            alt="edit"></button></td> -->
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>Employee Permanent Address</p>
+                                <div class="col-lg-12">
+
+                                    <table class="table text-nowrap">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">HOUSE NO</th>
+                                                <th scope="col">ADDRESS 1</th>
+                                                <th scope="col">ADDRESS 2</th>
+                                                <th scope="col">PINCODE</th>
+                                                <th scope="col">DISTRICT</th>
+                                                <th scope="col">STATE</th>
+                                                <th scope="col">EMAIL</th>
+                                                <!-- <th scope="col">ACTION</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let user of officeArray">
+
+                                                <td>{{user.villStreet}}</td>
+                                                <td>{{user.wardPanchayat}}</td>
+                                                <td>{{user.houseAddress}}</td>
+                                                <td>{{user.pinCode}}</td>
+                                                <td>{{user.districtId}}</td>
+                                                <td>{{user.stateId}}</td>
+                                                <td>{{user.emailId}}</td>
+                                                <!-- <td><button class="btn"><img src="../assets/images/edit.svg" -->
+                                                            <!-- alt="edit"></button></td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </form>
+                </div>
+              
+                  <mat-action-row>
+                    <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStep()">Previous</button>
+                    <button class="btn btn-primary  ms-2" color="primary" mat-raised-button mat-button matStepperNext (click)="nextStep()">Save & proceed</button>
+                  </mat-action-row>
+                </mat-expansion-panel>              
+              </mat-accordion>
+                            
+        </div>
+        <!-- <div>
+          <button mat-button matStepperNext>Next</button>
+        </div> -->
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" state="family">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Family Details and Nomination</ng-template>
+        <app-family-nominee [item]="currentItem"></app-family-nominee>
+        <div class="float-end">         
+          
+                <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+                <button mat-button matStepperNext class="btn btn-primary  ms-2">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" state="gng">
+        <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Service Records</ng-template>
+       <p>Services</p>
+
+       
+       <mat-card-actions>    
+        <div class="d-flex justify-content-end">         
+            <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+            <button mat-button matStepperNext class="btn btn-primary">Next</button>
+    </div>
+       </mat-card-actions>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fourthFormGroup" state="gng">
+        <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Loans and Advance</ng-template>
+        <mat-card class="example-card mat-elevation-z25">
+            <mat-card-header>
+              <mat-card-subtitle>Loans & Advances Details</mat-card-subtitle>
+              </mat-card-header>
+            <mat-card-content>
+                <app-loan-advance></app-loan-advance>
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>      
+                <div class="d-flex justify-content-end">
+                    <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+                    <button mat-button matStepperNext class="btn btn-primary">Next</button>
+                </div>           
+            </mat-card-actions>       
+          </mat-card>    
+            
+
+        </form>
+  
+      </mat-step>
+      <mat-step [stepControl]="fifthFormGroup" state="file">
+        <form [formGroup]="fifthFormGroup">
+          <ng-template matStepLabel>Calculations
+          </ng-template>
+          <h5>Calculations</h5>
+          <mat-accordion class="example-headers-align accordion">
+            <mat-expansion-panel class="mb-3 card_accordion" [expanded]="stepc === 0" (opened)="setStepc(0)" >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Pay Details
+                </mat-panel-title>                   
+              </mat-expansion-panel-header>  
+              <mat-action-row>
+                <button class="btn btn-primary  ms-2" mat-raised-button
+                color="primary" (click)="nextStepc()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>          
+            <mat-expansion-panel class="mb-3 card_accordion" [expanded]="stepc === 1" (opened)="setStepc(1)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Pension Details
+                </mat-panel-title>                
+              </mat-expansion-panel-header>
+              <mat-action-row>
+                <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStepc()">Previous</button>
+                 <button class="btn btn-primary  ms-2" mat-raised-button color="primary" (click)="nextStepc()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="mb-3 card_accordion" [expanded]="stepc === 2" (opened)="setStepc(2)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Commutation Details
+                  </mat-panel-title>                    
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStepc()">Previous</button>
+                    <button class="btn btn-primary  ms-2" mat-raised-button color="primary" (click)="nextStepc()">Next</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+            <mat-expansion-panel class="mb-3 card_accordion" [expanded]="stepc === 3" (opened)="setStepc(3)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Types of Additional Allowance,Recovery and Deductions Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-action-row>
+                <button class="btn btn-outline-cancel ms-2" mat-stroked-button (click)="prevStepc()">Previous</button>
+                <button class="btn btn-primary  ms-2" color="primary" mat-raised-button mat-button matStepperNext (click)="nextStepc()">Save & proceed</button>
+              </mat-action-row>
+            </mat-expansion-panel>              
+          </mat-accordion>
+          <!-- <div class="float-end">           
+            <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+            <button mat-button matStepperNext class="btn btn-primary  ms-2">Next</button>
+    </div> -->
+         
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="sixFormGroup" state="sunny">
+        <form [formGroup]="sixFormGroup">
+            <ng-template matStepLabel>Bank/Treasury Details</ng-template>
+            <app-bank-details></app-bank-details>
+             <div class="float-end">         
+                 <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+                 <button mat-button matStepperNext class="btn btn-primary  ms-2">Next</button>
+         </div>
+        </form>
+      </mat-step>
+      <mat-step state="last">
+        <ng-template matStepLabel>Documents</ng-template>
+        <h5>Documents</h5>
+       <app-documents-uploaded></app-documents-uploaded>
+
+        <div class="float-end">         
+            <button mat-stroked-button matStepperPrevious class="btn btn-outline-cancel ms-2">Previous</button>
+            <button mat-button  (click)="stepper.reset()" class="btn btn-primary  ms-2">Reset</button>
+    </div>
+       
+    </mat-step>
+  </mat-stepper>
+

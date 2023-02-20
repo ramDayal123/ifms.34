@@ -1,0 +1,377 @@
+<section class="content">
+    <div class=" p-4">
+        <div class="p-3">
+            <legend class="mb-3"> Family's Details</legend>
+            <form [formGroup]="FamilyDetails"  (click)=" OnSubmit()">
+                
+
+                 <div class="Row" style="overflow-x: auto;">
+                    <table class="table table-striped table-hover border">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Relationship</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  *ngFor="let user of formData">
+                            <th scope="row">1</th>
+                            <td>{{user.nameEn}}</td>
+                            <td>{{user.relationshipName}}</td>
+                            <td>{{user.dob.toISOString().slice(0,10)}}</td>
+                            <td>{{user.Gender}}</td>
+                            <td>+</td>
+                            
+                        </tr>
+                       
+                        </tbody>
+                      </table>
+                 
+                </div> 
+
+
+
+                <!-- <button class="toggle-button" igxButton="raised" (click)="toggleContent()">Toggle</button> -->
+                <!-- 1 -->
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" value="name"
+                            required="" data-validation-required-message="This field is required"
+                            aria-invalid="false" ngModel pattern="[a-zA-Z ]*" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['name'].errors}">
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['name'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['name'].errors['required']">
+                                Please Enter Name
+                            </div>
+                           </mat-hint>
+                        </mat-form-field>
+                     
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Relationship</mat-label>
+                            <select matNativeControl  formControlName="relationship" [(ngModel)]="relationship" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['relationship'].errors}">
+                                <option *ngFor="let mst of FamilyRelationdata" value="{{mst.RELATION_ID}}, {{mst.R_NAME_EN}}">
+                                    {{mst.R_NAME_EN}} </option>
+                            </select>
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['relationship'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['relationship'].errors['required']">
+                                Please Enter Relationship
+                            </div>
+                           </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Date of Birth  </mat-label>
+                        <input matInput [matDatepicker]="picker1" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" formControlName="dob" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['dob'].errors}" >
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-hint *ngIf="submitted && FamilyDetails.controls['dob'].errors"
+                        class="text-danger">
+                        <div
+                            *ngIf="submitted && FamilyDetails.controls['dob'].errors['required']">
+                            Please Enter of Birth
+                        </div>
+                       </mat-hint>
+                    </mat-form-field>
+                    
+                    
+                       
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Gender</mat-label>
+                            <select matNativeControl formControlName="Gender" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Gender'].errors}">
+                                <option *ngFor="let mst of Genderdata" value="{{mst.GEN_ID}},{{mst.GEN_NAME_EN}}">
+                                    {{mst.GEN_NAME_EN}} </option>
+                            </select>
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['Gender'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['Gender'].errors['required']">
+                                Please Enter Gender
+                            </div>
+                           </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Marital Status</mat-label>
+                            <select matNativeControl formControlName="Maritalstatus" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Maritalstatus'].errors}" >
+                                <option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+                                    {{mst.M_STATUS_NAME}} </option>
+                            </select>
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['Maritalstatus'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['Maritalstatus'].errors['required']">
+                                Please Enter Marital Status
+                            </div>
+                           </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    
+                       <div class="mt-3">
+                        <mat-label><b>Physically Disability</b></mat-label>
+                        <input matInput style="display:none" required >
+                        <mat-radio-group formControlName="disable">
+                            <mat-radio-button class="example-margin" value="after" color="primary" (change)="onItemChange('1')" >Yes
+                            </mat-radio-button>
+                            <mat-radio-button class="example-margin" value="before" color="primary" (change)="onItemChange('2')">No</mat-radio-button>
+                        </mat-radio-group>
+                       </div>
+                        <mat-hint *ngIf="submitted && FamilyDetails.controls['PhysicallyDisability'].errors"
+                        class="text-danger">
+                        <div
+                            *ngIf="submitted && FamilyDetails.controls['PhysicallyDisability'].errors['required']">
+                            Please Enter Physically Disability
+                        </div>
+                       </mat-hint>
+                    
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Percentage Of Disability</mat-label>
+                            <input matInput type="text" required="" aria-invalid="false" ngModel pattern="[a-zA-Z ]*" formControlName="PercentageDisability"  [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['PercentageDisability'].errors}">
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['PercentageDisability'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['PercentageDisability'].errors['required']">
+                                Please Enter Percentage Of Disability
+                            </div>
+                           </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                      
+                       <div class="mt-3"> <mat-label><b>Dependent</b></mat-label>
+                        <input matInput style="display:none" required >
+                        <mat-radio-group #group class="flex-wrap" formControlName="Dependent" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Dependent'].errors}">
+                            <mat-radio-button  value="0" color="primary" >Yes</mat-radio-button>
+                            <mat-radio-button  class="ml-5" value="1" color="primary" >No</mat-radio-button>
+                        </mat-radio-group></div>
+
+                        <mat-hint *ngIf="submitted && FamilyDetails.controls['Dependent'].errors"
+                        class="text-danger">
+                        <div
+                            *ngIf="submitted && FamilyDetails.controls['Dependent'].errors['required']">
+                            Please Enter Dependent
+                        </div>
+                       </mat-hint>
+                 
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        
+                       <div class="mt-3">
+                        <mat-label><b>Employed</b></mat-label>
+                        <input matInput style="display:none" required>
+                        <mat-radio-group #group class="flex-wrap" formControlName="Employed" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Employed'].errors}">
+                            <mat-radio-button value="0" color="primary" >Yes</mat-radio-button>
+                            <mat-radio-button  class="ml-5" value="1" color="primary" >No</mat-radio-button>
+                        </mat-radio-group>
+                       </div>
+                        <mat-hint *ngIf="submitted && FamilyDetails.controls['Employed'].errors"
+                        class="text-danger">
+                        <div
+                            *ngIf="submitted && FamilyDetails.controls['Employed'].errors['required']">
+                            Please Enter Employed
+                        </div>
+                       </mat-hint>
+                
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary  waves-effect ms-2" mat-raised-button  (click)=" OnSubmitAddData()">Add</button>
+                       
+                    </div>
+                    
+
+                </div>
+                <legend class="mb-3 mt-4"> Nominee Details</legend>
+                <div class="row" style="overflow-x: auto;">
+                
+                           <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Schemes</mat-label>
+                                    <select matNativeControl  formControlName="Schemes" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Schemes'].errors}">
+                                        <option *ngFor="let mst of getSchemeTypedata"
+                                        value={{mst.SCH_NOM_ID}}>
+                                        {{mst.SCH_NOM_NAME_EN}} </option>
+                                      </select>
+                                      <mat-hint *ngIf="submitted && FamilyDetails.controls['Schemes'].errors"
+                                        class="text-danger">
+                                        <div
+                                            *ngIf="submitted && FamilyDetails.controls['Schemes'].errors['required']">
+                                            Please Enter Schemes
+                                        </div>
+                                    </mat-hint>
+                                </mat-form-field>
+                               </div>
+                            
+                         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                            <mat-form-field class="w-100">
+                                <mat-label> Name of Nominee</mat-label>
+                                <input matInput  formControlName="NameNominee" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['NameNominee'].errors}">
+                                <mat-hint *ngIf="submitted && FamilyDetails.controls['NameNominee'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && FamilyDetails.controls['NameNominee'].errors['required']">
+                                    Please Enter Employed
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                          </div>
+                                
+                          <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                            <mat-form-field class="w-100" formLabel="always">
+                                <mat-label>State Insurance (Name Of Nominee, Relation, %)</mat-label>
+                                <select matNativeControl formControlName="Relation" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['Relation'].errors}" >
+                                    <option *ngFor="let mst of FamilyRelationdata"
+                                        value={{mst.RELATION_ID}}>
+                                        {{mst.R_NAME_EN}} </option>
+                                  </select>
+                                  <mat-hint *ngIf="submitted && FamilyDetails.controls['Relation'].errors"
+                                    class="text-danger">
+                                    <div
+                                        *ngIf="submitted && FamilyDetails.controls['Relation'].errors['required']">
+                                        Please Enter State Insurance (Name Of Nominee, Relation, %)
+                                    </div>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                              
+                     
+                            
+                           
+                                    <!-- <button type="button" class="btn bg-light-green waves-effect ms-2" mat-raised-button>Add</button> -->
+                                    
+                          
+                   
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> NPS (Name Of Nominee, Relation, % )</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter NPS (Name Of Nominee, Relation, %)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> GPF (Name of Nominee, Relation, %)</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter GPF (Name of Nominee, Relation, %)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> GI Police (Name of Nominee, Relation, %)</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter GI Police (Name of Nominee, Relation, %)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> Provident Fund AIS (Name of Nominee, Relation, %)</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter Provident Fund AIS (Name of Nominee, Relation, %)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> Provident Fund AIS (Name of Nominee, Relation, %)</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter Pension (Name of Nominee, Relation, %)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100" formLabel="always">
+                            <mat-label> Details of other family members (for nomination of gratuity purpose)</mat-label>
+                            <input matInput formControlName="share" [ngClass]="{'is-invalid':submitted && FamilyDetails.controls['share'].errors}" >
+                            <mat-hint *ngIf="submitted && FamilyDetails.controls['share'].errors"
+                            class="text-danger">
+                            <div
+                                *ngIf="submitted && FamilyDetails.controls['share'].errors['required']">
+                                Please Enter Details of other family members (for nomination of gratuity purpose)
+                            </div>
+                        </mat-hint>
+                        </mat-form-field>
+                      </div>
+
+                </div>
+            
+
+
+              <!-- <div class="text-center mt-4">
+                <button class="btn btn-primary waves-effect ms-2" mat-raised-button
+                (click)=" OnSubmit()"> Save As Draft</button>
+               
+              </div> -->
+
+            </form>
+        </div>
+    </div>
+
+
+</section>

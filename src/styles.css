@@ -1,0 +1,602 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+.w-100
+{
+    width: 100%;
+}
+@font-face {
+    font-family: Poppins;
+    src: url(assets/fonts/Poppins-Regular.ttf);
+  }
+  @font-face {
+    font-family: Lato;
+    src: url(assets/fonts/Lato-Regular.ttf);
+  }
+/*-----------------------------*/
+           /*FONTS */
+/*-----------------------------*/
+body
+{
+    font-family: Lato!important;
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+h1, h2, h3, h4, h5, h6
+{
+    font-family: Poppins!important;
+    font-weight: 700!important;
+}
+h1
+{
+    font-size: 1.5rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+h2
+{
+    font-size: 1.375rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+h3
+{
+    font-size: 1.25rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+h4
+{
+    font-size: 1.125rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+h5
+{
+    font-size: 1rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+h6
+{
+    font-size: 0.875rem!important;
+    margin: 0 0 16px;
+    color: #212529;
+}
+.f-16
+{
+    font-size: 1rem!important;
+}
+.f-14
+{
+    font-size:  0.875px!important;
+}
+.f-12
+{
+    font-size: 0.7rem!important;
+}
+.sticky-sidemenu
+{
+  position: sticky;
+  top: 95px;
+}
+/*-----------------------------*/
+    /*Components - COLORS */
+/*-----------------------------*/
+.primary-color
+{
+    color: #231E60;
+}
+.secondary-color
+{
+    color: #3584CF;
+}
+.primary-black-color
+{
+    color: #000000;
+}
+.charcoal-black-color
+{
+    color: #333333;
+}
+.light-black-color
+{
+    color: #636363;
+}
+.light-gray-color
+{
+    color: #F8F8F8;
+}
+.golden-bg
+{
+    background: linear-gradient(#E2A50F, #F5EE48);
+}
+.sky-bg
+{
+    background-image: linear-gradient(#2471bc, #3584cf);
+}
+.primary-bg
+{
+    background-color: #231E60;
+    color: #fff;
+}
+.secondary-bg
+{
+    background-color: #3584CF;
+    color: #fff;
+}
+.light-blue-bg
+{
+    background-color: #F5F5FF;    
+}
+.warn-color
+{
+    color: #dd3030;
+}
+.success-color
+{
+    color: #189d2d;
+}
+/*-----------------------------*/
+    /*Components - BUTTONS */
+/*-----------------------------*/
+.btn{
+    padding: 2px 30px!important;
+    border-radius: .2rem;
+    border: none;
+}
+.btn-primary,.btn-outline-primary:hover{
+    background-color: #231E60!important;    
+    color: #fff;    
+}
+.btn-primary:hover{
+    background-color: #1B1D94; 
+}
+.btn-secondary,.btn-outline-secondary:hover{
+    background-color: #3584CF;
+    color: #fff;
+}
+.btn-secondary:hover{
+    background-color: #3B91E3; 
+}
+.btn-tertiary,.btn-outline-tertiary:hover
+{
+    background-color: #F0CA1B;
+    color: #000;
+}
+.btn-outline-primary{
+    border: 1px solid #231E60;
+    color: #231E60;
+}
+.btn-outline-secondary{
+    border: 1px solid #3584CF;
+    color: #3584CF;
+}
+.btn-outline-tertiary
+{
+    border: 1px solid #F0CA1B;
+    color: #F0CA1B;
+}
+.btn-outline-cancel
+{
+    border: 1px solid #8E8E8E;
+    color: #8E8E8E;
+}
+.btn-outline-white
+{
+    border: 1px solid #ffffff;
+    color: #Ffffff;
+}
+.btn-link-primary
+{
+    color: #231E60;
+}
+.btn-link-secondary
+{
+    color: #3584CF;
+}
+.radio-btn
+{
+    font-size: 16px;
+}
+.form-check-input:focus
+{
+background-color: #231E60;
+}
+.btn-success
+{
+    background-color: #189d2d;
+    color: #fff;
+}
+.btn-danger
+{
+    background-color: #dd3030;
+}
+/*-----------------------------*/
+    /*Components - SWITCH */
+/*-----------------------------*/
+.switch
+{
+    background-color: #F5F5FF;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+}
+.switch .nav-link
+{
+    color: #231E60;
+}
+.switch .nav-pills .nav-link.active, .nav-pills .show>.nav-link
+{
+    background-color: #231E60!important;
+    color: #fff;
+}
+/*-----------------------------*/
+    /*Components - CHIPS */
+/*-----------------------------*/
+.chip
+{
+    background-color: #F5F5FF;
+    padding: 7px 14px;
+    border-radius: 50px;
+}
+
+/*-----------------------------*/
+  /*Components - PAGINATION */
+/*-----------------------------*/
+.pagination-circle .page-link {
+    border-radius: 50%;
+    padding: 10px 15px;
+}
+.left-arrow,.right-arrow
+{
+    padding: 0px 12px;
+}
+.pagination .page-item.active .page-link
+{
+    background-color: #231E60;
+    border:1px solid #231E60;
+    color: #fff;
+}
+.pagination .page-item.active .page-link:hover
+{
+    background-color: #1B1D94;
+    border:1px solid #231E60;
+    color: #fff!important;
+}
+.pagination .page-link
+{
+    color: #231E60;
+}
+.pagination li a img
+{
+    width: 12px;
+}
+.pagination .page-link:hover
+{
+    color: #1B1D94!important;
+}
+/*-----------------------------*/
+  /*Components - SEARCH BOX*/
+/*-----------------------------*/
+.Search-btn-position
+{
+    position: absolute!important;
+    right: 0px;
+    top: 4px;
+}
+/*-----------------------------*/
+  /*Components - HEADER*/
+/*-----------------------------*/
+#header
+{
+ z-index: 1000000!important;
+}
+/*-----------------------------*/
+  /*Components - TABLE*/
+/*-----------------------------*/
+table .thead-light
+{
+    background-color: #f5f5ff !important;
+}
+.table .thead-light th
+{
+    background-color: #F5F5FF!important;
+    color: #000;
+    border: none;
+}
+.table>:not(:first-child)
+{
+    border: none;
+}
+table
+{
+    /* border: 1px solid #D9D9D9; */
+    border-collapse: collapse;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+  }
+  
+  /* top-right border-radius */
+  table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  
+  /* bottom-left border-radius */
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  
+  /* bottom-right border-radius */
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+  table tr:last-child td
+  {
+    border-bottom: none;
+  }
+.table>:not(caption)>*>*
+{
+    border-bottom-color: #dddddd;
+}
+/*-----------------------------*/
+  /*Components - BREADCRUMBS*/
+/*-----------------------------*/
+.breadcrumb li:not(:last-child)::after {
+    display: inline-block;
+    margin: 0 0.25rem;
+    content: "→";
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding: 10px!important;
+    color: var(--bs-breadcrumb-divider-color);
+    content: none!important;
+}
+.breadcrumb .breadcrumb-item a
+{
+ color: #3584CF!important;
+ text-decoration: none;
+ font-weight: 500!important;
+}
+.breadcrumb
+{
+ padding: 10px 15px;
+ border-radius: 5px;
+ background-color: #fff!important;
+ box-shadow: 0 0px 0px rgb(0 0 0 / 16%), 0 0px 5px rgb(0 0 0 / 15%);
+}
+li.breadcrumb-item
+{
+ padding: 5px!important;
+ font-weight: 500!important;
+}
+/*-----------------------------*/
+     /*Components - CARD*/
+/*-----------------------------*/
+.card_gradient{
+    background-image: linear-gradient(to right, #ffffff, #e9e9e9);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border: 1px solid #e7e7e7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.card
+{
+ background-color: #fff!important;
+ box-shadow: 0 0px 0px rgb(0 0 0 / 16%), 0 0px 5px rgb(0 0 0 / 15%);
+ border: none!important;
+ padding: 15px;
+}  
+.square-card
+{
+    padding: 20px 0px;
+    text-align: center;   
+    width: 100%;
+    padding-top: 100%;
+    vertical-align: middle;
+}
+.square-card .content
+{
+    
+    position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    
+}
+.rectangular-card img
+{
+   width: 18px;
+}
+/*-----------------------------*/
+   /*Components - ACCORDION*/
+/*-----------------------------*/
+.accordion
+{
+    /* background-color: #f5f5ff; */
+    /* padding: 15px; */
+}
+.card_accordion
+{
+    border-radius: 5px !important;
+    box-shadow: 0 0px 4px rgba(0,0,0,0.16)!important;
+}
+/*-----------------------------*/
+    /*Components - PROGRESSBAR*/
+/*-----------------------------*/
+.progres-bar
+{
+
+}
+.progres-bar:hover
+{
+
+}
+.progres-bar:active
+{
+
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start, .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end, .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap
+{
+    border-width: 1px!important;
+}
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix  { padding: 0.4em 0px }
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper { top: -1.5em; }
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white!important;
+    border-radius: 5px!important;
+  }
+  /*-----------------------------*/
+    /*Components - Dialog*/
+/*-----------------------------*/
+.dialog-w-50{
+    border-radius: 30px!important;
+    max-width: 50vw!important;
+  }
+
+  .myPanelClass{
+    margin-top: 30px; 
+    width: 70%;
+}
+/* .last-edited-step-1 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-2 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-2 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(10)
+ { */
+    /* margin-top: .2rem; */
+    /* border-top: 3px solid #198754!important;
+
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #198754;
+  color: #fff;
+} */
+
+
+.last-edited-step-1 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+
+.last-edited-step-2 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-2 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-3 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-4 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+.last-edited-step-5 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(10),
+
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(10),
+.last-edited-step-6 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(12),
+
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(2),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(4),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(6),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(8),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(10),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(12),
+.last-edited-step-7 .mat-horizontal-stepper-header + .mat-stepper-horizontal-line:nth-child(14)
+
+{
+    /* margin-top: .2rem; */
+    border-top: 3px solid #198754!important;
+
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #231e60;
+  color: #fff;
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: #231e60; 
+  outline-width: thick !important;
+	outline-color: #231e60 !important;
+	outline-style: 1px solid !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+	/* background: #198754 !important; */
+	color: #fff;
+	outline-width: thick;
+	outline-color: #231e60;
+	outline-style: 1px solid;
+}
+
+.mat-step-header .mat-step-icon-active {
+  background-color: #231e60 !important;
+}
+.mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #198754 !important;
+  color: #fff;
+}
+ .mat-step-header .mat-step-icon-state-edit {
+    background-color: #231e60 !important;
+    color: #fff;
+  }
+
+  /* .mat-step-header .mat-step-icon-state-edit:hover {
+	outline-color: #3584cf !important;
+	outline-style: 1px solid  #3584cf !important;
+  } */
+.mat-step-header .mat-step-icon-state-done + .mat-step-label, .mat-step-header .mat-step-icon-state-edit + .mat-step-label {
+  color: #231e60 !important;
+}
+
+
+
+::ng-deep.mat-form-field-label-wrapper {
+    position: absolute;
+    left: 0;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    /* font-weight: 600; */
+    font-size: 20px;
+}
+
+::ng-deep div#mat-select-20-panel {
+    transform-origin: 50% 24px 0px;
+    font-size: 16px;
+    opacity: 1;
+    min-width: calc(100% + 32px);
+    transform: scaleY(1);
+    margin-top: 41px;
+}

@@ -1,0 +1,635 @@
+<section class="content">
+    <div class=" p-4">
+        <div class="p-3">
+            <legend class="mb-3">Employee's Service Details</legend>
+            <form [formGroup]="EmpService" (ngSubmit)="OnSubmit()">
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Entitlement Status</mat-label>
+                            <mat-select matNativeControl formControlName="EntitlementStatus">
+                                <mat-option *ngFor="let mst of getEntitalmentData" value={{mst.ENT_ID}}>
+                                    {{mst.ENT_STATUS}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['EntitlementStatus'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['EntitlementStatus'].errors['required']">
+                                    Please Enter Entitlement Status
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Employee Type </mat-label>
+                            <mat-select matNativeControl formControlName="employeeType">
+                                <mat-option *ngFor="let mst of EmployeeTypedata" value={{mst.STATUS_ID}}>
+                                    {{mst.STATUS_NAME}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['employeeType'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['employeeType'].errors['required']">
+                                    Please Enter Employee Type
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Category </mat-label>
+                            <mat-select matNativeControl (selectionChange)="getSubServiceCategory($event)"
+                                formControlName="service_Category">
+                                <mat-option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                    {{mst.SRVC_CAT_NAME_EN}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['service_Category'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['service_Category'].errors['required']">
+                                    Please Enter Service Category
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Sub Service Category/cadre</mat-label>
+                            <mat-select matNativeControl formControlName="serviceSub_Category">
+                                <mat-option *ngFor="let mst of SubServiceCategorydata" value={{mst.SRVC_SUBCAT_ID}}>
+                                    {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['serviceSub_Category'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['serviceSub_Category'].errors['required']">
+                                    Please Enter Sub Service Category/cadre
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Gazetted/ Non-Gazetted</mat-label>
+                            <mat-select matNativeControl  formControlName="Gazetted"> 
+                                <mat-option value="-1">--Gazetted/
+                                    Non-Gazetted--</mat-option>
+                                <mat-option value="Gazetted">Gazetted</mat-option>
+                                <mat-option value="Non-Gazetted ">Non-Gazetted </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Quota </mat-label>
+                            <mat-select matNativeControl formControlName="ServiceQuota">
+                                <mat-option *ngFor="let mst of getServiceQuotaData" value={{mst.QUOTA_ID}}>
+                                    {{mst.QUOTA_NAME_EN}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['ServiceQuota'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['ServiceQuota'].errors['required']">
+                                    Please Enter Service Quota
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Parent Department</mat-label>
+                            <mat-select matNativeControl formControlName="ParentDepartment"
+                                aria-label="Default select example" id="">
+                                <mat-option *ngFor="let mst of getDepartmentData" value={{mst.DEPT_ID}}>
+                                    {{mst.DEPT_NAME_EN}} </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Current Department </mat-label>
+                            <mat-select matNativeControl formControlName="CurrentDepartment">
+                                <mat-option *ngFor="let mst of  getDesignationData" value={{mst.DESG_ID}}>
+                                    {{mst.DESG_DESC_EN}} </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Current Designation</mat-label>
+                            <mat-select matNativeControl formControlName="CurrentDesignation">
+                                <mat-option *ngFor="let mst of   getDesignationData" value={{mst.DESG_ID}}>
+                                    {{mst.DESG_DESC_EN}} </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointed As </mat-label>
+                            <mat-select matNativeControl formControlName="AppointedAs">
+                                <mat-option *ngFor="let mst of  getDesignationData" value={{mst.DESG_ID}}>
+                                    {{mst.DESG_DESC_EN}} </mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && EmpService.controls['AppointedAs'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['AppointedAs'].errors['required']">
+                                    Please Enter Appointed As
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointment Order No </mat-label>
+                            <input matInput formControlName="AppointmentOrderNo"  (keypress)="this.global.numberOnly($event)" maxlength="40"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['AppointmentOrderNo'].errors}">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['AppointmentOrderNo'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['AppointmentOrderNo'].errors['required']">
+                                    Please Enter Appointment Order No
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Order Issuing Authority / Office</mat-label>
+                            <input matInput formControlName="OrderIssuingAuthority"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['OrderIssuingAuthority'].errors}">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['OrderIssuingAuthority'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && EmpService.controls['OrderIssuingAuthority'].errors['required']">
+                                    Please Enter Order Issuing Authority / Office
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointing Authority</mat-label>
+                            <input matInput formControlName="AppointmentOrderDate"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['AppointmentOrderDate'].errors}">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['JoiningDateService'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['JoiningDateService'].errors['required']">
+                                    Please Enter Appointing Authority
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date of Joining Regular Service</mat-label>
+                            <input matInput formControlName="JoiningDateService" [matDatepicker]="picker00"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['JoiningDateService'].errors}">
+                                <mat-datepicker-toggle matSuffix [for]="picker00">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker00 class="mat-piker"></mat-datepicker>
+                                 <mat-hint *ngIf="submitted && EmpService.controls['JoiningDateService'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['JoiningDateService'].errors['required']">
+                                    Please Enter Date of Joining Regular Service
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointment Order Date</mat-label>
+                            <input matInput formControlName="AppointmentOrderDate"  [matDatepicker]="picker0"
+                            [ngClass]="{'is-invalid':submitted && EmpService.controls['AppointmentOrderDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker0">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker0 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['AppointmentOrderDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['AppointmentOrderDate'].errors['required']">
+                                    Please Enter Appointment Order Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Of Present desgination</mat-label>
+                            <input matInput [matDatepicker]="picker2" formControlName="DatePresentdesgination"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['DatePresentdesgination'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker2">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker2 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['DatePresentdesgination'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && EmpService.controls['DatePresentdesgination'].errors['required']">
+                                    Please Enter Date Of Present desgination
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <!-- <div class="col-md-3 Dinline-block">
+                        <mat-form-field>
+                           <input matInput [matDatepicker]="picker" 
+                            placeholder="DOB(DD/MM/YYYY)" required formControlName="dob" 
+                             readonly />
+                           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                     </div> -->
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Joining Present DDO</mat-label>
+                            <input matInput [matDatepicker]="picker3" formControlName="DateJoiningPresentDDO"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['JoiningDateService'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker3">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker3 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['DateJoiningPresentDDO'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && EmpService.controls['DateJoiningPresentDDO'].errors['required']">
+                                    Please Enter Date Joining Present DDO
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Confirmation</mat-label>
+                            <input matInput [matDatepicker]="picker4" formControlName="DateConfirmation"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['DateConfirmation'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker4">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker4 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['DateConfirmation'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['DateConfirmation'].errors['required']">
+                                    Please Enter Date Confirmation
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+                  
+                </div>
+
+
+                <div class="row mt-2">
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Annual Increment Opted Date</mat-label>
+                            <input matInput [matDatepicker]="picker5" formControlName="IncrementOptedDate"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['IncrementOptedDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker5">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker5 class="mat-piker"></mat-datepicker>
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['IncrementOptedDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['IncrementOptedDate'].errors['required']">
+                                    Please Enter Annual Increment Opted Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Superanuation Date</mat-label>
+                            <input matInput [matDatepicker]="picker6" formControlName="SuperanuationDate"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['SuperanuationDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker6">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker6 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['SuperanuationDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['SuperanuationDate'].errors['required']">
+                                    Please Enter Superanuation Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Joining / Charge Taken Date</mat-label>
+                            <input matInput [matDatepicker]="picker7" formControlName="ChargeTakenDate"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['ChargeTakenDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker7">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker7 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['ChargeTakenDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['ChargeTakenDate'].errors['required']">
+                                    Please Enter Joining / Charge Taken Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Joining Time</mat-label>
+                            <input matInput type="time" formControlName="Joiningtime"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['Joiningtime'].errors}">
+                            <mat-hint *ngIf="submitted && EmpService.controls['Joiningtime'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['Joiningtime'].errors['required']">
+                                    Please Enter Joining Time
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+
+
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>GRP/Pran Type</mat-label>
+                            <input matInput formControlName="GRPPran"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['GRPPran'].errors}">
+                            <mat-hint *ngIf="submitted && EmpService.controls['GRPPran'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['GRPPran'].errors['required']">
+                                    Please Enter GRP/Pran Type
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>State Insurance Number</mat-label>
+                            <input matInput formControlName="StateInsuranceNumber"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['StateInsuranceNumber'].errors}">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['StateInsuranceNumber'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && EmpService.controls['StateInsuranceNumber'].errors['required']">
+                                    Please Enter State Insurance Number
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>RGHS No</mat-label>
+                            <input matInput formControlName="RGHSNo"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['RGHSNo'].errors}"
+                                (keypress)="this.global.numberOnly($event)" maxlength="40">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['RGHSNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['RGHSNo'].errors['required']">
+                                    Please Enter RGHS No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>GPF No</mat-label>
+                            <input matInput formControlName="GPFNo"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['GPFNo'].errors}"
+                                (keypress)="this.global.numberOnly($event)" maxlength="40">
+                            <mat-hint *ngIf="submitted && EmpService.controls['GPFNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['GPFNo'].errors['required']">
+                                    Please Enter GPF No
+                                </div>
+                            </mat-hint>
+
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Belt No.</mat-label>
+                            <input matInput formControlName="BeltNo"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['BeltNo'].errors}"
+                                (keypress)="this.global.numberOnly($event)" maxlength="40">
+                            <mat-hint *ngIf="submitted && EmpService.controls['BeltNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['BeltNo'].errors['required']">
+                                    Please Enter State Belt No.
+                                </div>
+                            </mat-hint>
+
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>PLI No.</mat-label>
+                            <input matInput formControlName="PLINo"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['PLINo'].errors}"
+                                (keypress)="this.global.numberOnly($event)" maxlength="40">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['PLINo'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['PLINo'].errors['required']">
+                                    Please Enter PLI No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>I.A.S CPNF No.</mat-label>
+                            <input matInput formControlName="IAS_CPNF"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['IAS_CPNF'].errors}">
+
+                            <mat-hint *ngIf="submitted && EmpService.controls['IAS_CPNF'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['IAS_CPNF'].errors['required']">
+                                    Please Enter I.A.S CPNF No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you ex-service man?</mat-label>
+                            <input matInput formControlName="ex_service_man"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['ex_service_man'].errors}" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)">
+                        </mat-form-field>
+
+                        <div *ngIf="submitted && EmpService.controls['ex_service_man'].errors" class="text-danger">
+                            <div *ngIf="submitted && EmpService.controls['ex_service_man'].errors['required']">
+                                Please Enter Are you ex-service man?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you getting pension from the previous
+                                military service</mat-label>
+                            <input matInput formControlName="previous_militaryservice"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['previous_militaryservice'].errors}" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)">
+                        </mat-form-field>
+                        <div *ngIf="submitted && EmpService.controls['previous_militaryservice'].errors" class="text-danger">
+                            <div *ngIf="submitted && EmpService.controls['previous_militaryservice'].errors['required']">
+                                Please Enter PLI No.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you getting civil service pension</mat-label>
+                            <input matInput formControlName="civil_servicepension"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['civil_servicepension'].errors}" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)">
+                        </mat-form-field>
+                        <div *ngIf="submitted && EmpService.controls['civil_servicepension'].errors" class="text-danger">
+                            <div *ngIf="submitted && EmpService.controls['civil_servicepension'].errors['required']">
+                                Please Enter Are you getting civil service pension
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Joining Date</mat-label>
+                        <input matInput [matDatepicker]="picker13" formControlName="RetirementDate"
+                            [ngClass]="{'is-invalid':submitted && EmpService.controls['RetirementDate'].errors}" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)">
+                        <mat-datepicker-toggle matSuffix [for]="picker13">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker13 class="mat-piker"></mat-datepicker>
+                        <mat-hint *ngIf="submitted && EmpService.controls['RetirementDate'].errors"
+                            class="text-danger">
+                            <div *ngIf="submitted && EmpService.controls['RetirementDate'].errors['required']">
+                                Please Enter Joining Date
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                    </div>
+
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Joining Date</mat-label>
+                            <input matInput [matDatepicker]="picker12" formControlName="JoiningDate"
+                                [ngClass]="{'is-invalid':submitted && EmpService.controls['JoiningDate'].errors}" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)">
+                            <mat-datepicker-toggle matSuffix [for]="picker12">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker12 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && EmpService.controls['JoiningDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && EmpService.controls['JoiningDate'].errors['required']">
+                                    Please Enter Joining Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+                </div>
+
+
+<!-- 
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary waves-effect ms-2" mat-raised-button (click)=" OnSubmit()"> Save As Draft </button>
+                    <button type="button" class="btn btn-primary ms-2" mat-raised-button> Next &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,99 @@
+<article>
+    <section>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <div class="">
+                  
+                        <div class="row" >
+                            
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6" *ngFor="let file11 of Single_files; let i = index">
+                            
+                               
+                                <span> {{ file11.docName }} </span>
+                               
+                                <div class="">
+                                    <div class="single-file">
+                                        <div class="file-icon me-2">
+                                            <div class="delete" class="position-relative">
+                                                <h4>{{file11.docName.toString().slice(-3)}}</h4>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <h6 class="name">
+                                                {{ file11.docName }}
+                                            </h6>
+                                           <p class="size mt-1">
+                                            {{ formatBytes(180000,file11.docName) }} / 200 KB
+                                            </p>
+                                            
+                                        </div>
+                                        <div class="file-icon me-2" *ngIf="!completed" >
+                                            <div class="delete" class="position-relative">
+                                                <h4>
+                                                    {{ progress }} %
+                                                </h4>   
+                                            </div>
+                                        </div>
+                                         <!-- <div *ngIf="completed" style="color: #189D2D;"><mat-icon>done</mat-icon>Uploaded</div>   -->
+                                        <label class="ms-3">
+                                            <button mat-stroked-button color="primary"
+                                                class="Browserbtn">Preview</button>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6 col-xxl-6" *ngFor="let file11 of Single_files1; let i = index">
+                                <span> {{ file11.docName }} </span>
+                                <div class="">
+                                   
+                                    <div class="single-file">
+                                        <div class="file-icon me-2">
+                                            <div class="delete" class="position-relative">
+                                                <h4>{{file11.docName.toString().slice(-3)}}</h4>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="info">
+                                            <h6 class="name">
+                                                {{ file11.docName }}
+                                            </h6>
+                                            <p class="size mt-1">
+                                                {{ formatBytes(200000,file11.docName) }} / 200 KB
+                                            </p>
+                                           
+                                             <!--<app-progress [progress]="file?.progress"></app-progress> -->
+                                        </div>
+
+                                        <div class="file-icon me-2" *ngIf="!completed" >
+                                            <div class="delete" class="position-relative">
+                                                <h4>
+                                                    {{ progress }} %
+                                                </h4>   
+                                            </div>
+                                        </div>
+                                         <div *ngIf="completed" style="color: #189D2D;"> Uploaded</div>
+                                        <label>
+                                            <button mat-stroked-button color="primary"
+                                                class="Browserbtn">Preview</button>
+                                        </label>
+                                        <!-- <span>
+                                            <div class="delete" (click)="Single_Delete(i)">
+                                                <img src="./assets/images/delete.svg">
+                                            </div>
+                                        </span> -->
+                                    </div>
+                                </div>
+
+
+                           
+
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

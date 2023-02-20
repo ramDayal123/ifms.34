@@ -1,0 +1,2334 @@
+<div class="p-4">
+    <div class="p-5 card" >
+        <legend class="mb-3">Employee's Basic Information</legend>
+        <form [formGroup]="makerPreview" class="content bg-color">
+            <div class="row mt-2">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 ">
+                    <mat-radio-group aria-label="Select an option mb-3">
+                        <mat-radio-button value="1" checked color="primary"> Jan Aadhaar Number</mat-radio-button>
+                        <mat-radio-button value="2" disabled="" class="ml-2 optionbutton " color="primary">Aadhaar
+                            Number
+                        </mat-radio-button>
+                        <mat-radio-button value="2" disabled="" class="ml-2 optionbutton" color="primary">Mobile Number
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <div class="input-group mt-3">
+                        <mat-form-field class="w-100">
+
+                            <mat-label>JanAadhar Number</mat-label>
+                            <input matInput #input formControlName="JanadharInfodata" name="JanadharInfodata"
+                                id="JanadharInfodata" maxlength="10" (keypress)="numberOnly($event)">
+                            <button type="button" mat-icon-button matSuffix aria-label="Clear">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                            <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                        </mat-form-field>
+
+                        <span id="sptxt" class="text-danger" style="margin-top: -17px"></span>
+
+                    </div>
+                </div>
+
+                <div class="col-5 col-sm-5">
+                    <mat-form-field class="w-100 mt-5">
+                        <mat-label> Member's Name</mat-label>
+                        <mat-select matNativeControl formControlName="MemberID"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['MemberID'].errors}">
+                            <mat-option value="">--Select Person--</mat-option>
+                            <!-- <mat-option *ngFor="let mst of JanadharInfodata" value={{mst.janMid}}
+                                    [disabled]="mst.age <=18">
+                                    {{mst.nameEng}}&nbsp; &nbsp;
+                                    <span class="mr-3">{{mst.janMid}}</span> &nbsp; &nbsp;, &nbsp;
+                                    &nbsp;<b class="mr-3 font-weight-bold">{{mst.age
+                                        }} </b>
+            
+                                </mat-option> -->
+                            <option>12</option>
+                            <option>12</option>
+                        </mat-select>
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['MemberID'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['MemberID'].errors['required']">
+                                Please Enter Member's Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>First Name </mat-label>
+                        <input matInput pattern="[a-zA-Z ]*" formControlName="Name"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Name'].errors}">
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Name'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Name'].errors['required']">
+                                Please Enter First Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Middle Name </mat-label>
+                        <input matInput formControlName="middle_name"
+                            (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"
+                            pattern="[a-zA-Z][a-zA-Z ]+"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['middle_name'].errors}">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['middle_name'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['middle_name'].errors['required']">
+                                Please Enter Middle Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="last_name"
+                            (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"
+                            pattern="[a-zA-Z][a-zA-Z ]+"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['last_name'].errors}">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['last_name'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['last_name'].errors['required']">
+                                Please Enter Last Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Gender.</mat-label>
+                        <mat-select matNativeControl formControlName="gender"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['gender'].errors}">
+                            <option value="">Male</option>
+                            <option value="">Male</option>
+                            <option value="">Male</option>
+                            <!-- <mat-option *ngFor="let mst of GenderData" value={{mst.GEN_ID}}>
+                                    {{mst.GEN_NAME_EN}} </mat-option> -->
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['gender'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['gender'].errors['required']">
+                                Please Enter Gender
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+
+            <div class="row mt-2">
+
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Height ( cm )</mat-label>
+                        <input matInput aria-invalid="false" formControlName="height"
+                            (keypress)="this.global.numberOnly($event)"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['height'].errors}">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['height'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['height'].errors['required']">
+                                Please Enter Height ( cm )
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput formControlName="dob"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['dob'].errors}" />
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['dob'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['dob'].errors['required']">
+                                Please Enter Date of Birth
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                    <!-- <mat-form-field >
+                       
+                            <input matInput [matDatepicker]="dp">
+                            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp></mat-datepicker>
+                          </mat-form-field> -->
+
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>DOB in words :</mat-label>
+                        <input matInput [matDatepicker]="picker1" readonly="" readonly=""
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['dob_words'].errors}">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['dob_words'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['dob_words'].errors['required']">
+                                Please Enter Date Of Birth
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+
+
+
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Identification Mark</mat-label>
+                        <input matInput aria-invalid="false"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Identification'].errors}"
+                            aria-invalid="false" formControlName="Identification">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Identification'].errors"
+                            class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Identification'].errors['required']">
+                                Please Enter Identification Marks
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-2">
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Marital Status</mat-label>
+                        <mat-select matNativeControl formControlName="matrial"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['matrial'].errors}">
+
+                            <!-- <mat-option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+                                    {{mst.M_STATUS_NAME}} </mat-option> -->
+                            <option value="">Marital Status</option>
+                            <option value="">Marital Status</option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['matrial'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['matrial'].errors['required']">
+                                Please Enter Marital Status
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Blood Group</mat-label>
+                        <mat-select matNativeControl formControlName="Blood_Group"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Blood_Group'].errors}">
+                            <!-- <mat-option *ngFor="let mst of BloodGroupdata" value={{mst.B_GRP_ID}}>
+                                    {{mst.B_GRP_NAME}} </mat-option> -->
+                            <option>A+</option>
+                            <option>A+</option>
+                            <option>A+</option>
+                            <option>A+</option>
+                        </mat-select>
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Blood_Group'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Blood_Group'].errors['required']">
+                                Please Enter Blood Group
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Social Category</mat-label>
+                        <mat-select matNativeControl formControlName="CATEGORY_ID"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['CATEGORY_ID'].errors}">
+                            <!-- <mat-option *ngFor="let mst of getCasteCategoryData" value={{mst.CATEGORY_ID}}>
+                                    {{mst.CAT_NAME_EN}} </mat-option> -->
+                            <option value="">Social Category</option>
+                            <option value="">Social Category</option>
+                            <option value="">Social Category</option>
+
+                        </mat-select>
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['CATEGORY_ID'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['CATEGORY_ID'].errors['required']">
+                                Please Enter Social Category
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Father's Name</mat-label>
+                        <input matInput formControlName="fname"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['fname'].errors}">
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['fname'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['fname'].errors['required']">
+                                Please Enter Father's Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row mt-2">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Mother's Name</mat-label>
+                        <input matInput formControlName="mname"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['mname'].errors}">
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['mname'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['mname'].errors['required']">
+                                Please Enter Mother's Name
+                            </div>
+                        </mat-hint>
+
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Spouse Name</mat-label>
+                        <input matInput [ngClass]="{'is-invalid':submitted && makerPreview.controls['sname'].errors}"
+                            aria-invalid="false" formControlName="sname">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['sname'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['sname'].errors['required']">
+                                Please Enter Spouse Name
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput formControlName="mobileno" (keypress)="this.global.numberOnly($event)"
+                            maxlength="10"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['mobileno'].errors}">
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['mobileno'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['mobileno'].errors['required']">
+                                Please Enter Mobile Number
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Email ID </mat-label>
+                        <input matInput type="email" formControlName="emailid"
+                            pattern="pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}"
+                            placeholder="your-name@provider.com"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['emailid'].errors}">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['emailid'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['emailid'].errors['required']">
+                                Please Enter Email ID
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Home District</mat-label>
+                        <mat-select matNativeControl formControlName="district_id"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['district_id'].errors}">
+                            <!-- <mat-option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}}>
+                                    {{mst.DIST_NAME_EN}} </mat-option> -->
+                            <option value="">Home District</option>
+
+                            <option value="">Home District</option>
+
+                        </mat-select>
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['district_id'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['district_id'].errors['required']">
+                                Please Enter Home District
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Home Town </mat-label>
+                        <mat-select matNativeControl formControlName="Home_Town"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Home_Town'].errors}">
+                            <mat-option value="1">Jaipur</mat-option>
+                            <mat-option value="2">Sikar</mat-option>
+                            <mat-option value="3">Ajmer</mat-option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Home_Town'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Home_Town'].errors['required']">
+                                Please Enter Home Town
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Nationality</mat-label>
+                        <mat-select matNativeControl formControlName="nationalitys"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['nationalitys'].errors}">
+                            <mat-option value="Indian" selected>Indian</mat-option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['nationalitys'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['nationalitys'].errors['required']">
+                                Please Enter Nationality
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="mt-3 mb-2">
+                        <mat-radio-group aria-label="mat-select an mat-option">
+
+                        </mat-radio-group>
+
+                        <mat-label><b>Disability Status</b></mat-label>
+                        <input matInput style="display:none" required>
+
+                        <mat-radio-group formControlName="Disability_Status">
+                            <mat-radio-button class="example-margin" value="1" color="primary">Yes
+                            </mat-radio-button>
+                            <mat-radio-button class="example-margin" value="2" color="primary">No</mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Disability_Status'].errors"
+                            class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Disability_Status'].errors['required']">
+                                Please Enter Disability Status
+                            </div>
+                        </mat-hint>
+                    </div>
+
+                </div>
+                <!-- <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">                                      
+                                        <div  class="mt-3 mb-2">
+                                           <mat-label class="mr-4"><b>Belongs to Minority</b></mat-label>
+                                           <input matInput style="display:none" [ngClass]="{'is-invalid':submitted && makerPreview.controls['Belongs_Minority'].errors}">
+                                           <mat-radio-group #group class="flex-wrap" formControlName="Belongs_Minority" style="margin-left:20px;" >
+                                               <mat-radio-button value="0" color="primary" class="mr-5">Yes</mat-radio-button>
+                                               <mat-radio-button value="1" color="primary" class="ml-5">No</mat-radio-button>
+                                           </mat-radio-group>
+                                           <mat-hint *ngIf="submitted && makerPreview.controls['Belongs_Minority'].errors"
+                                           class="text-danger">
+                                           <div
+                                               *ngIf="submitted && makerPreview.controls['Belongs_Minority'].errors['required']">
+                                               Please Enter Belongs to Minority
+                                           </div>
+                                          </mat-hint>
+                                        
+                                        </div>
+                                    
+
+                                   </div> -->
+
+
+
+            </div>
+
+            <div class="row mt-2">
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Type of Disability</mat-label>
+                        <mat-select matNativeControl formControlName="Disability"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Disability'].errors}">
+                            <!-- <mat-option *ngFor="let mst of DisabilityTypeData" value={{mst.DISABILITY_ID}}>
+                                    {{mst.DIS_TYPE_EN}} </mat-option> -->
+                            <option value="">Type of Disability</option>
+                            <option value="">Type of Disability</option>
+                            <option value="">Type of Disability</option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Disability'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Disability'].errors['required']">
+                                Please Enter Belongs to Minority
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label> Percentage of Disability</mat-label>
+                        <input matInput formControlName="Percentage_Disability"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['Percentage_Disability'].errors}">
+                        <mat-hint *ngIf="submitted && makerPreview.controls['Percentage_Disability'].errors"
+                            class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['Percentage_Disability'].errors['required']">
+                                Please Enter Percentage of Disability
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Religion</mat-label>
+                        <mat-select matNativeControl formControlName="religion"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['religion'].errors}">
+                            <mat-option value="religion" selected>Indian</mat-option>
+                        </mat-select>
+                        <mat-hint *ngIf="submitted && makerPreview.controls['religion'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['religion'].errors['required']">
+                                Please Enter Religion
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Aadhaar Ref No</mat-label>
+                        <input matInput maxlength="16" formControlName="addharRef"
+                            (keypress)="this.global.numberOnly($event)"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['addharRef'].errors}">
+                    </mat-form-field>
+                    <div *ngIf="submitted && makerPreview.controls['addharRef'].errors" class="text-danger">
+                        <div *ngIf="submitted && makerPreview.controls['addharRef'].errors['required']">
+                            Please Enter Aadhaar Ref No
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row mt-2">
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label> Passport No</mat-label>
+                        <input matInput formControlName="PassportNo" (keypress)="this.global.numberOnly($event)"
+                            maxlength="11"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['PassportNo'].errors}">
+                    </mat-form-field>
+
+                    <div *ngIf="submitted && makerPreview.controls['PassportNo'].errors" class="text-danger">
+                        <div *ngIf="submitted && makerPreview.controls['PassportNo'].errors['required']">
+                            Please Enter Passport No
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>PAN No</mat-label>
+                        <input matInput formControlName="pancardNo"
+                            (keypress)="this.global.keyPressAlphaNumeric($event)" maxlength="10"
+                            [ngClass]="{'is-invalid':submitted && makerPreview.controls['pancardNo'].errors}">
+                    </mat-form-field>
+                    <div *ngIf="submitted && makerPreview.controls['pancardNo'].errors" class="text-danger">
+                        <div *ngIf="submitted && makerPreview.controls['pancardNo'].errors['required']">
+                            Please Enter PAN No
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class=" mt-5">
+
+                <legend class="mb-3">Employee's Service Details</legend>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+
+                        <mat-form-field class="w-100">
+                            <mat-label>Entitlement Status</mat-label>
+                            <mat-select matNativeControl formControlName="Status">
+                                <mat-option value="0">Status 1</mat-option>
+                                <mat-option value="1">Status 1</mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['Status'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['Status'].errors['required']">
+                                    Please Enter Entitlement Status
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Employee Type </mat-label>
+                            <mat-select matNativeControl formControlName="employeeType">
+                                <!-- <mat-option *ngFor="let mst of EmployeeTypedata"
+                                                        value={{mst.STATUS_ID}}>
+                                                        {{mst.STATUS_NAME}}
+                                                    </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['employeeType'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['employeeType'].errors['required']">
+                                    Please Enter Employee Type
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Category </mat-label>
+                            <mat-select matNativeControl formControlName="service_Category">
+                                <!-- <mat-option *ngFor="let mst of getServiceCategoryeData"
+                                                        value={{mst.SRVC_CAT_ID}}> {{mst.SRVC_CAT_NAME_EN}}
+                                                    </mat-option> -->
+
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+
+
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['service_Category'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['service_Category'].errors['required']">
+                                    Please Enter Service Category
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Sub Service Category/cadre</mat-label>
+                            <mat-select matNativeControl formControlName="serviceSub_Category">
+                                <!-- <mat-option *ngFor="let mst of SubServiceCategorydata"
+                                                        value={{mst.SRVC_SUBCAT_ID}}>
+                                                        {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                                    </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['serviceSub_Category'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['serviceSub_Category'].errors['required']">
+                                    Please Enter Sub Service Category/cadre
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+                <div class="row mt-2">
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Gazetted/ Non-Gazetted</mat-label>
+                            <mat-select matNativeControl>
+                                <mat-option value="-1">--Gazetted/
+                                    Non-Gazetted--</mat-option>
+                                <mat-option value="Gazetted">Gazetted</mat-option>
+                                <mat-option value="Non-Gazetted ">Non-Gazetted </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Quota </mat-label>
+                            <mat-select matNativeControl formControlName="ServiceQuota">
+                                <!-- <mat-option *ngFor="let mst of getServiceQuotaData"
+                                                        value={{mst.QUOTA_ID}}>
+                                                        {{mst.QUOTA_NAME_EN}}
+                                                    </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['ServiceQuota'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['ServiceQuota'].errors['required']">
+                                    Please Enter Service Quota
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Parent Department</mat-label>
+                            <mat-select matNativeControl formControlName="ParentDepartment"
+                                aria-label="Default select example" id="">
+                                <!-- <mat-option *ngFor="let mst of getDepartmentData"
+                                                        value={{mst.DEPT_ID}}>
+                                                        {{mst.DEPT_NAME_EN}} </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Current Department </mat-label>
+                            <mat-select matNativeControl formControlName="CurrentDepartment">
+                                <!-- <mat-option *ngFor="let mst of  getDesignationData"
+                                                        value={{mst.DESG_ID}}>
+                                                        {{mst.DESG_DESC_EN}} </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Current Designation</mat-label>
+                            <mat-select matNativeControl formControlName="CurrentDesignation">
+                                <!-- <mat-option *ngFor="let mst of   getDesignationData"
+                                                        value={{mst.DESG_ID}}>
+                                                        {{mst.DESG_DESC_EN}} </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointed As </mat-label>
+                            <mat-select matNativeControl formControlName="AppointedAs">
+                                <!-- <mat-option *ngFor="let mst of  getDesignationData"
+                                                        value={{mst.DESG_ID}}>
+                                                        {{mst.DESG_DESC_EN}} </mat-option> -->
+                                <option>Employee Type</option>
+                                <option>Employee Type</option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['AppointedAs'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['AppointedAs'].errors['required']">
+                                    Please Enter Appointed As
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointment Order No</mat-label>
+                            <input matInput formControlName="AppointmentOrderNo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['AppointmentOrderNo'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['AppointmentOrderNo'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['AppointmentOrderNo'].errors['required']">
+                                    Please Enter Appointment Order No
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Order Issuing Authority / Office</mat-label>
+                            <input matInput formControlName="OrderIssuingAuthority"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['OrderIssuingAuthority'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['OrderIssuingAuthority'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['OrderIssuingAuthority'].errors['required']">
+                                    Please Enter Order Issuing Authority / Office
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointing Authority</mat-label>
+                            <input matInput formControlName="AppointmentOrderDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['AppointmentOrderDate'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors['required']">
+                                    Please Enter Appointing Authority
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date of Joining Regular Service</mat-label>
+                            <input matInput formControlName="AppointmentOrderDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['AppointmentOrderDate'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors['required']">
+                                    Please Enter Date of Joining Regular Service
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Appointment Order Date</mat-label>
+                            <input matInput formControlName="AppointmentOrderDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['AppointmentOrderDate'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['JoiningDateService'].errors['required']">
+                                    Please Enter Appointment Order Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Of Present desgination</mat-label>
+                            <input matInput [matDatepicker]="picker4" formControlName="DatePresentdesgination"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['DatePresentdesgination'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker4">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker4 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['DatePresentdesgination'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['DatePresentdesgination'].errors['required']">
+                                    Please Enter Date Of Present desgination
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+
+
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Joining Present DDO</mat-label>
+                            <input matInput [matDatepicker]="picker5" formControlName="DateJoiningPresentDDO"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['JoiningDateService'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker5">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker5 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['DateJoiningPresentDDO'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['DateJoiningPresentDDO'].errors['required']">
+                                    Please Enter Date Joining Present DDO
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date Confirmation</mat-label>
+                            <input matInput [matDatepicker]="picker6" formControlName="DateConfirmation"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['DateConfirmation'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker6">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker6 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['DateConfirmation'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['DateConfirmation'].errors['required']">
+                                    Please Enter Date Confirmation
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Annual Increment Opted Date</mat-label>
+                            <input matInput [matDatepicker]="picker7" formControlName="IncrementOptedDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['IncrementOptedDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker7">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker7 class="mat-piker"></mat-datepicker>
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['IncrementOptedDate'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['IncrementOptedDate'].errors['required']">
+                                    Please Enter Annual Increment Opted Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Superanuation Date</mat-label>
+                            <input matInput [matDatepicker]="picker8" formControlName="SuperanuationDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['SuperanuationDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker8">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker8 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['SuperanuationDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['SuperanuationDate'].errors['required']">
+                                    Please Enter Superanuation Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Joining / Charge Taken Date</mat-label>
+                            <input matInput [matDatepicker]="picker9" formControlName="ChargeTakenDate"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['ChargeTakenDate'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker9">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker9 class="mat-piker"></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['ChargeTakenDate'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['ChargeTakenDate'].errors['required']">
+                                    Please Enter Joining / Charge Taken Date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Joining Time</mat-label>
+                            <input matInput type="time" formControlName="JoiningTime"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['JoiningTime'].errors}">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['JoiningTime'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['JoiningTime'].errors['required']">
+                                    Please Enter Joining Time
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>GRP/Pran Type</mat-label>
+                            <input matInput formControlName="GRPPran"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['GRPPran'].errors}">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['GRPPran'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['GRPPran'].errors['required']">
+                                    Please Enter GRP/Pran Type
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>State Insurance Number</mat-label>
+                            <input matInput formControlName="StateInsuranceNumber"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['StateInsuranceNumber'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['StateInsuranceNumber'].errors"
+                                class="text-danger">
+                                <div
+                                    *ngIf="submitted && makerPreview.controls['StateInsuranceNumber'].errors['required']">
+                                    Please Enter State Insurance Number
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>RGHS No</mat-label>
+                            <input matInput formControlName="RGHSNo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['RGHSNo'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['RGHSNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['RGHSNo'].errors['required']">
+                                    Please Enter RGHS No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>GPF No</mat-label>
+                            <input matInput formControlName="GPFNo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['GPFNo'].errors}">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['GPFNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['GPFNo'].errors['required']">
+                                    Please Enter GPF No
+                                </div>
+                            </mat-hint>
+
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Belt No.</mat-label>
+                            <input matInput formControlName="BeltNo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['BeltNo'].errors}">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['BeltNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['BeltNo'].errors['required']">
+                                    Please Enter State Belt No.
+                                </div>
+                            </mat-hint>
+
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>PLI No.</mat-label>
+                            <input matInput formControlName="PLINo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['PLINo'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['PLINo'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['PLINo'].errors['required']">
+                                    Please Enter PLI No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+
+
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>I.A.S CPNF No.</mat-label>
+                            <input matInput formControlName="IAS_CPNF"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['IAS_CPNF'].errors}">
+
+                            <mat-hint *ngIf="submitted && makerPreview.controls['IAS_CPNF'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['IAS_CPNF'].errors['required']">
+                                    Please Enter I.A.S CPNF No.
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you ex-service man?</mat-label>
+                            <input matInput formControlName="BeltNo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['BeltNo'].errors}">
+                        </mat-form-field>
+
+                        <div *ngIf="submitted && makerPreview.controls['BeltNo'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['BeltNo'].errors['required']">
+                                Please Enter Are you ex-service man?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you getting pension from the previous
+                                military service</mat-label>
+                            <input matInput formControlName="PLINo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['PLINo'].errors}">
+                        </mat-form-field>
+                        <div *ngIf="submitted && makerPreview.controls['PLINo'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['PLINo'].errors['required']">
+                                Please Enter PLI No.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Are you getting civil service pension</mat-label>
+                            <input matInput formControlName="PLINo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['PLINo'].errors}">
+                        </mat-form-field>
+                        <div *ngIf="submitted && makerPreview.controls['PLINo'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['PLINo'].errors['required']">
+                                Please Enter Are you getting civil service pension
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Retirement Date</mat-label>
+                            <input matInput formControlName="PLINo"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['PLINo'].errors}">
+                        </mat-form-field>
+                        <div *ngIf="submitted && makerPreview.controls['PLINo'].errors" class="text-danger">
+                            <div *ngIf="submitted && makerPreview.controls['PLINo'].errors['required']">
+                                Please Enter Retirement Date
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+            <!-- address -->
+
+            <div class=" p-3">
+
+
+                <legend class="mb-3 mt-4 Currenaddress"><u>Permanent Address</u></legend>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>State</mat-label>
+                            <!-- <mat-select matNativeControl #mySelectP id="State" formControlName="State" name="item-name"
+                                    (selectionChange)='getDistrict($event)' disableOptionCentering panelClass="myPanelClass" [ngClass]="{'is-invalid':submitted && makerPreview.controls['State'].errors}">
+                                    <mat-option *ngFor="let mst of Statedata" [value]=mst.STATE_ID>
+                                        {{mst.ST_NAME_EN}}
+                                    </mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option value="">State</option>
+                                <option value="">State</option>
+                                <option value="">State</option>
+                                <option value="">State</option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>District </mat-label>
+                            <!-- <mat-select matNativeControl #mySelectD id="District" formControlName="District"
+                                 
+                                  [ngClass]="{'is-invalid':submitted && makerPreview.controls['District'].errors}"
+                                  (selectionChange)="onBlockChange()">
+
+                                    <mat-option *ngFor="let mst of Districtdata" [value]=mst.DIST_ID>
+                                        {{mst.DIST_NAME_EN}}
+                                    </mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option value="">District </option>
+                                <option value="">District </option>
+                                <option value="">District </option>
+                            </mat-select>
+                        </mat-form-field>
+
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <div class="mt-3 mb-2">
+                            <mat-label><b>Area</b></mat-label>
+                            <input matInput style="display:none" required>
+                            <mat-radio-group #group class="flex-wrap px-3" formControlName="area">
+
+                                <mat-radio-button name="area" id="areaR" value="0"
+                                    color="primary">Rural</mat-radio-button>
+                                <mat-radio-button class="ml-5 px-3" name="area" id="areaU" value="1"
+                                    color="primary">Urban
+                                </mat-radio-button>
+
+
+                            </mat-radio-group>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Block</mat-label>
+                            <!-- <mat-select matNativeControl (selectionChange)="getPanchayatWard2($event)" formControlName="block" disableOptionCentering panelClass="myPanelClass">
+                                        <mat-option *ngFor="let mst of BlockCitydata" [value]=mst.BLOCK_ID>
+                                            {{mst.BLOCK_NAME_EN}}
+                                        </mat-option>
+                                    </mat-select> -->
+                            <mat-select>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['block'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['block'].errors['required']">
+                                    Please Enter Area
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Panchayat </mat-label>
+                            <!-- <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass" (selectionChange)="getPanchayatWard3($event)" formControlName="Panchayat">
+                                    <mat-option *ngFor="let mst of PanchayatWardata" value={{mst.GRAM_P_ID}}>
+                                        {{mst.GRAM_P_NM}}
+                                    </mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Muncipal</mat-label>
+                            <!-- <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass" (selectionChange)="getPanchayatWard($event)" formControlName="Muncipal">
+                                    <mat-option *ngFor="let mst of Muncipaldata" [value]=mst.MUN_P_ID>
+                                        {{mst.MUN_P_NAME}}
+                                    </mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Ward </mat-label>
+                            <!-- <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass" id="" formControlName="Ward">
+                                    <mat-option *ngFor="let mst of getWarddata" value={{mst.WARD_ID}}>
+                                        {{mst.WARD_NAME}}
+                                    </mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Village/ Street / Nagar </mat-label>
+                            <mat-select>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+                                <option value="">>Block</option>
+
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['village'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['village'].errors['required']">
+                                    Please Enter Vilage
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>House No</mat-label>
+                            <input matInput formControlName="HouseNo"
+                                (keypress)="this.global.keyPressAlphaNumeric($event)" maxlength="20">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['HouseNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['HouseNo'].errors['required']">
+                                    Please Enter Home No
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Pin Code</mat-label>
+                            <input matInput formControlName="pincode" (keypress)="this.global. keyPressNumbers($event)"
+                                maxlength="6">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['pincode'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['pincode'].errors['required']">
+                                    Please Enter Pin Code
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                        <mat-form-field class="w-100">
+                            <mat-label>Assembly</mat-label>
+                            <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass"
+                                formControlName="Assembly" id="">
+                                <mat-option selected>---select---</mat-option>
+                                <mat-option value="4">Assembly</mat-option>
+                                <mat-option value="1">Jaipur</mat-option>
+                                <mat-option value="2">Sikar</mat-option>
+                                <mat-option value="3">Churu</mat-option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['Assembly'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['Assembly'].errors['required']">
+                                    Please Enter Assembly
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+
+            <legend class="mb-3 mt-4 Currenaddress"><u>Current Address</u></legend>
+            <section class="example-section">
+                <mat-checkbox value="checked" color="primary" formControlName="add_type"><b>Same As Permanent
+                        Address</b>
+                </mat-checkbox>
+            </section>
+            <div class="row mt-2">
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>State</mat-label>
+                        <!-- <mat-select matNativeControl #mySelectP id="State" formControlName="cstate" name="item-name"
+                                    (selectionChange)='getDistrict($event)' disableOptionCentering panelClass="myPanelClass" >
+                                    <mat-option *ngFor="let mst of Statedata" [value]=mst.STATE_ID>
+                                        {{mst.ST_NAME_EN}}
+                                    </mat-option>
+                                </mat-select> -->
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>District </mat-label>
+                        <!-- <mat-select matNativeControl #mySelectD id="District" formControlName="cdistrict"
+                                 disableOptionCentering panelClass="myPanelClass"
+                                  (selectionChange)="onBlockChange()">
+                                    <mat-option *ngFor="let mst of Districtdata" [value]=mst.DIST_ID>
+                                        {{mst.DIST_NAME_EN}}
+                                    </mat-option>
+                                </mat-select> -->
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+
+
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <div class="mt-3 mb-2">
+                        <mat-label><b>Area</b></mat-label>
+                        <input matInput style="display:none" required>
+                        <mat-radio-group #group class="flex-wrap px-3" formControlName="carea">
+                            <mat-radio-button name="carea" id="areaR" value="0" color="primary">Rural</mat-radio-button>
+                            <mat-radio-button class="ml-5 px-3" name="carea" id="areaU" value="1" color="primary">Urban
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Block</mat-label>
+                        <!-- <mat-select matNativeControl (selectionChange)="getPanchayatWard2($event)" formControlName="cblock" disableOptionCentering panelClass="myPanelClass">
+                                    <mat-option *ngFor="let mst of BlockCitydata" [value]=mst.BLOCK_ID>
+                                        {{mst.BLOCK_NAME_EN}}
+                                    </mat-option>
+                                </mat-select> -->
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div class="row mt-2">
+
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Panchayat </mat-label>
+                        <!-- <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass"
+                             (selectionChange)="getPanchayatWard3($event)" formControlName="cpanchayat">
+                                <mat-option *ngFor="let mst of PanchayatWardata" value={{mst.GRAM_P_ID}}>
+                                    {{mst.GRAM_P_NM}}
+                                </mat-option>
+                            </mat-select> -->
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Muncipal</mat-label>
+                        <!-- <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass
+                                 " (selectionChange)="getPanchayatWard($event)" formControlName="cmunicipal">
+                                <mat-option *ngFor="let mst of Muncipaldata" value={{mst.MUN_P_ID}}>
+                                    {{mst.MUN_P_NAME}}
+                                </mat-option>
+                            </mat-select> -->
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Ward </mat-label>
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Village/ Street / Nagar </mat-label>
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Ward </mat-label>
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Village/ Street / Nagar </mat-label>
+                        <mat-select>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+                            <option value="">>Block</option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>House No</mat-label>
+                        <input matInput formControlName="chouseNo" (keypress)="this.global.keyPressAlphaNumeric($event)"
+                            maxlength="20">
+
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Pin Code</mat-label>
+                        <input matInput formControlName="cpincode" (keypress)="this.global. keyPressNumbers($event)"
+                            maxlength="6">
+
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+                    <mat-form-field class="w-100">
+                        <mat-label>Assembly</mat-label>
+                        <mat-select matNativeControl disableOptionCentering panelClass="myPanelClass"
+                            formControlName="cassembly" id="">
+                            <mat-option selected>---select---</mat-option>
+                            <mat-option value="4">Assembly</mat-option>
+                            <mat-option value="1">Jaipur</mat-option>
+                            <mat-option value="2">Sikar</mat-option>
+                            <mat-option value="3">Churu</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+
+            <div class="p-3">
+                <legend class="mb-3"><u> Family's Details</u></legend>
+
+                <div class="Row" style="overflow-x: auto;">
+                    <table class="table table-striped table-hover border">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Relationship</th>
+                                <th scope="col">Date of Birth</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr  *ngFor="let user of formData">
+                                    <th scope="row">1</th>
+                                    <td>{{user.nameEn}}</td>
+                                    <td>{{user.relationshipName}}</td>
+                                    <td>{{user.dob.toISOString().slice(0,10)}}</td>
+                                    <td>{{user.Gender}}</td>
+                                    <td>+</td>
+                                    
+                                </tr> -->
+                            <tr>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <legend class="mb-3"><u> Nominee Details</u></legend>
+                <div class="Row" style="overflow-x: auto;">
+                    <table class="table table-striped table-hover border">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Schema</th>
+                                <th scope="col">Nominee Name</th>
+                                <th scope="col">Relationship</th>
+                                <th scope="col">%Schema</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr  *ngFor="let user of formData">
+                                    <th scope="row">1</th>
+                                    <td>{{user.nameEn}}</td>
+                                    <td>{{user.relationshipName}}</td>
+                                    <td>{{user.dob.toISOString().slice(0,10)}}</td>
+                                    <td>{{user.Gender}}</td>
+                                    <td>+</td>
+                                    
+                                </tr> -->
+                            <tr></tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="p-3">
+                <legend class="mb-3 mt-4 Currenaddress"><u>Bank Details</u></legend>
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Account Type</mat-label>
+                            <input matInput formControlName="Account_Type"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['Account_Type'].errors}"
+                                (keypress)="this.global.keyPressNumbers($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['Account_Type'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['Account_Type'].errors['required']">
+                                    Please Enter Account Type
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Bank Account Number</mat-label>
+                            <input matInput formControlName="BankAccount"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['BankAccount'].errors}"
+                                (keypress)="this.global.keyPressNumbers($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['BankAccount'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['BankAccount'].errors['required']">
+                                    Please Enter Bank Account Number
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>IFSC Code </mat-label>
+                            <input matInput formControlName="ifscCode"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['ifscCode'].errors}"
+                                (keypress)="this.global.keyPressAlphaNumeric($event)" maxlength="15">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['ifscCode'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['ifscCode'].errors['required']">
+                                    Please Enter Enter IFSC Code
+                                </div>
+                            </mat-hint>
+
+                        </mat-form-field>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="row mt-2">
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Bank Name</mat-label>
+                            <mat-select>
+                                <option>Bank Name</option>
+                                <option>Bank Name</option>
+                                <option>Bank Name</option>
+
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['bankName'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['bankName'].errors['required']">
+                                    Please Enter Bank Name
+                                </div>
+                            </mat-hint>
+
+
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Branch Name</mat-label>
+                            <!-- <mat-select matNativeControl  formControlName="branchName">
+                                        <mat-option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}> {{mst.BRANCH_NAME_EN}} </mat-option>
+                                    </mat-select> -->
+                            <mat-select>
+                                <option>Branch Name</option>
+                                <option>Branch Name</option>
+                                <option>Branch Name</option>
+                            </mat-select>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['branchName'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['branchName'].errors['required']">
+                                    Please Enter Branch Name
+                                </div>
+                            </mat-hint>
+
+
+                        </mat-form-field>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Pay Entitlement -->
+            <div class="p-3">
+                <legend class="mb-3"><u>Pay Entitlement</u></legend>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Category </mat-label>
+                            <!-- <mat-select matNativeControl  (selectionChange)="getSubServiceCategory($event)" formControlName="service_Category">
+                                        <mat-option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}> {{mst.SRVC_CAT_NAME_EN}} </mat-option>
+                                        </mat-select> -->
+
+                            <mat-select>
+                                opt
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Sub Service Category </mat-label>
+                            <!-- <mat-select matNativeControl  formControlName="serviceSub_Category">
+                                        <mat-option *ngFor="let mst of SubServiceCategorydata" value={{mst.SRVC_SUBCAT_ID}}>
+                                            {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                        </mat-option>
+                                    </mat-select> -->
+
+                            <mat-select>
+                                <option value="">Sub Service Category</option>
+                                <option value="">Sub Service Category</option>
+                                <option value="">Sub Service Category</option>
+
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Designation </mat-label>
+                            <!-- <mat-select matNativeControl formControlName="Designation">
+                                    <mat-option *ngFor="let mst of Designationdata" value={{mst.DESG_ID}}>{{mst.DESG_DESC_EN}}</mat-option>
+                                </mat-select> -->
+                            <mat-select>
+                                <option>Designation </option>
+                                <option>Designation </option>
+                                <option>Designation </option>
+                                <option>Designation </option>
+
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Pay Commission</mat-label>
+                            <!-- <mat-select matNativeControl  formControlName="Commission">
+                                        <mat-option *ngFor="let mst of PayCommisiondata" value={{mst.PAY_COMMISION_ID}}>
+                                            {{mst.PAY_COMM_NAME_EN}}
+                                        </mat-option>
+                                        </mat-select> -->
+                            <mat-select>
+                                <option>Commission</option>
+                                <option>Commission</option>
+                                <option>Commission</option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date of 7th Pay opted date </mat-label>
+                            <input matInput [matDatepicker]="picker2" readonly="" readonly=""
+                                formControlName="dob_words"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['dob_words'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['dob_words'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['dob_words'].errors['required']">
+                                    Please Enter Date of 7th Pay opted date
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date of Entry in Existing Pay Band & Grade Pay</mat-label>
+                            <input matInput [matDatepicker]="picker3" readonly="" readonly=""
+                                formControlName="dob_words"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['dob_words'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['dob_words'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['dob_words'].errors['required']">
+                                    Please Enter Date of Entry in Existing Pay Band & Grade Pay
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Pay Level/Pay Scale/Pay level</mat-label>
+                            <mat-select matNativeControl formControlName="HRAData">
+                                <mat-option>level 1</mat-option>
+                                <mat-option>level 2</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Date of present Pay Scale</mat-label>
+                            <input matInput [matDatepicker]="picker9" readonly="" readonly=""
+                                formControlName="present_PayScale"
+                                [ngClass]="{'is-invalid':submitted && makerPreview.controls['dob_words'].errors}">
+                            <mat-datepicker-toggle matSuffix [for]="picker9"></mat-datepicker-toggle>
+                            <mat-datepicker #picker9></mat-datepicker>
+                            <mat-hint *ngIf="submitted && makerPreview.controls['dob_words'].errors"
+                                class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['dob_words'].errors['required']">
+                                    Please Enter Date of present Pay Scale
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+
+                            <mat-select matNativeControl formControlName="gradePay">
+                                <mat-option value="">---- Grade Pay ----</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Basic Pay</mat-label>
+                            <mat-select matNativeControl formControlName="BasicPay">
+                                <mat-option value="" selected>----- Select Basic Pay -----</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>HoA</mat-label>
+                            <input matInput formControlName="HoA" placeholder="fbgdfgjf">
+                            <mat-hint *ngIf="submitted && makerPreview.controls['HoA'].errors" class="text-danger">
+                                <div *ngIf="submitted && makerPreview.controls['HoA'].errors['required']">
+                                    Please Enter Branch Name
+                                </div>
+                            </mat-hint>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>DA Rate</mat-label>
+                            <!-- <mat-select matNativeControl  formControlName="Darate">
+                                        <mat-option *ngFor="let mst of DAdata" value={{mst.DA_RATE_ID}}>{{mst.DA_RATE}}
+                                        </mat-option>
+                                        </mat-select> -->
+                            <mat-select>
+                                <option>Rate</option>
+                                <option>Rate</option>
+                                <option>Rate</option>
+                                <option>Rate</option>
+                                <option>Rate</option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Govt Quarter</mat-label>
+                            <mat-select matNativeControl formControlName="GovtQuarter">
+                                <!-- <mat-option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                                {{mst.SRVC_CAT_CD_NAME_EN}}
+                                            </mat-option> -->
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>House Rent Allowance</mat-label>
+                            <!-- <mat-select matNativeControl  formControlName="HRAData">
+                                        <mat-option *ngFor="let mst of HRAData" value={{mst.CITY_CLASS_ID}}>{{mst.RATE}}
+                                        </mat-option>
+                                    </mat-select> -->
+                            <mat-select>
+                                <option>Allowance</option>
+                                <option>Allowance</option>
+                                <option>Allowance</option>
+                                <option>Allowance</option>
+                                <option>Allowance</option>
+                                <option>Allowance</option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>City Compensatory Allowance</mat-label>
+                            <mat-select matNativeControl formControlName="city_compensatory">
+                                <mat-option>level 1</mat-option>
+                                <mat-option>level 2</mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>NPA</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="NPA">
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>GPF</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="GPF">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>NPS</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="NPS">
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>SI</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="si">
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Income tax</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="income_tax">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Professional Tax</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="Professional_Tax">
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Other</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="Other">
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Corp Details</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*" formControlName="Corp_Details">
+                        </mat-form-field>
+                    </div>
+
+                    <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                            <mat-form-field class="w-100" >
+                            <mat-label>Professional Tax</mat-label>
+                            <input matInput pattern="[a-zA-Z ]*"  formControlName="Name" >
+                            </mat-form-field>
+                            </div>  -->
+
+
+                </div>
+
+
+                <!-- filedset -->
+
+                <div class="Row" style="padding-top: 10px;">
+                    <label class="bg-light-blue" style=" font-weight: bold;">
+                        <div class="section-title">
+                            <p>Group Name Details</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="Row" style="padding-top: 10px;">
+                    <label class=" bg-light-blue" style=" font-weight: bold;">
+                        <div class="section-title">
+                            <u>
+                                <p>Earning & Deduction Details</p>
+                            </u>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Earning Component</th>
+                                </tr>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Pay Head Name</th>
+                                    <th>Pay Head Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Basic Pay/Band Pay</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Grade Pay</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Dearness Allowance</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>House Rent Allowance</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a routerLink="">
+                            <u>Add Component</u>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Deduction Component</th>
+                                </tr>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Pay Head Name</th>
+                                    <th>Pay Head Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>GPF</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>NPS Employee Contribution</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>SI</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Income Tax</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a routerLink="">Add Component</a>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Net Earning</th>
+                                <th scope="col">Net Deduction</th>
+                                <th scope="col">Net Salary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+
+            <div class="p-3">
+                <legend class="mb-3"> Employee Documents</legend>
+
+
+                <div class="Row" style="overflow: auto;">
+
+                    <table class="table table-border">
+                        <thead>
+                            <tr>
+                                <th>Sr no</th>
+                                <th>Documents Types</th>
+                                <th>Description</th>
+                                <th>Choose File</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Documents Types </mat-label>
+                                        <!-- <mat-select matNativeControl   formControlName="documennt" [ngClass]="{'is-invalid':submitted && makerPreview.controls['documennt'].errors}">
+                                                    <mat-option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+                                                      {{mst.TYPE_NAME}}
+                                                    </mat-option>
+                                                  </mat-select> -->
+                                        <mat-select>
+                                            <option>Documents</option>
+                                            <option>Documents</option>
+                                            <option>Documents</option>
+                                            <option>Documents</option>
+                                            <option>Documents</option>
+                                        </mat-select>
+                                        <mat-hint *ngIf="submitted && makerPreview.controls['documennt'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && makerPreview.controls['documennt'].errors['required']">
+                                                Please Enter Name
+                                            </div>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                    <div *ngIf="submitted && makerPreview.controls['documennt'].errors"
+                                        class="text-danger">
+                                        <div *ngIf="submitted && makerPreview.controls['documennt'].errors['required']">
+                                            Please Enter Annual Increment Opted Date
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                                <td>
+                                    <mat-form-field class="w-100">
+                                        <mat-label>Description</mat-label>
+                                        <input matInput formControlName="mname" formControlName="Description">
+
+                                        <mat-hint *ngIf="submitted && makerPreview.controls['Description'].errors"
+                                            class="text-danger">
+                                            <div
+                                                *ngIf="submitted && makerPreview.controls['Description'].errors['required']">
+                                                Please Enter Description
+                                            </div>
+                                        </mat-hint>
+
+                                    </mat-form-field>
+
+                                </td>
+
+                                <td>
+                                    <!-- <input type="file" class="form-control" formControlName="file" /> -->
+
+                                    <!-- <div (click)="uploadFile.click()" class="mt-2">
+                                                <button type="button" class="btn btn-secondary ms-2" mat-raised-button color="secondary">Choose File</button>
+                                                <input type="file" #uploadFile (change)="selectFile($event)" style="display: none" formControlName="file">
+                                                <mat-label class="ms-2">{{selectedFiles}}</mat-label>
+                                            </div> -->
+                                </td>
+                                <td>
+                                    <button class="btn bg-light-green waves-effect ms-2" mat-raised-button>+
+                                        Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+            </div>
+
+
+            <div class="mt-4">
+                <button class="btn btn-danger waves-effect ms-2 m-2" mat-raised-button 
+                    type="button" id="btn" (click)="printPage()">Print</button>
+            
+         
+                <button  class="btn btn-success waves-effect ms-2 m-2" mat-raised-button
+                    type="submit">Save</button>
+             
+           
+                <button class="btn btn-primary waves-effect ms-2 m-2" mat-raised-button 
+                    type="button">Return Back</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>

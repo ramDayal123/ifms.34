@@ -1,0 +1,276 @@
+ @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+.mat-form-field-wrapper {
+    padding-bottom: 0px; 
+    }
+    .box{
+        padding: 20px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .box1{
+        padding: 2px 20px;
+        background-color: #ffffff;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    ::ng-deep .mat-snack-bar-container {
+        border-radius: 4px;
+        box-sizing: border-box;
+        display: block;
+        margin: 8.5rem 0 !important;
+        max-width: 33vw;
+        min-width: 344px;
+        padding: 14px 16px;
+        min-height: 48px;
+        transform-origin: center;
+        background-color: #ffffff;
+        color: #000;
+    }
+
+       .space{
+        display: flex;
+        gap: 20px;
+        }
+
+
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: 15px 0;
+          }
+          
+          .avatar-upload .avatar-edit {
+            position: absolute;
+            right: 10px;
+            z-index: 1;
+            top: 13px;
+          }
+          
+          .avatar-upload .avatar-edit input {
+            display: none;
+          }
+          
+          .avatar-upload .avatar-edit .custom-label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #3efc78;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+          
+          }
+          
+          .avatar-upload .avatar-edit .upload-image {
+            background: #3efc78;
+          }
+          
+          .avatar-upload .avatar-edit .remove-image {
+            background: rgba(233, 30, 98, 0.075);
+          }
+          
+          .avatar-upload .avatar-edit .custom-label:hover {
+            opacity: 1;
+          }
+          
+          .avatar-upload .avatar-edit .custom-label:after {
+            position: absolute;
+            text-align: center;
+            margin: auto;
+            top: 8px;
+            right: 0;
+            left: 1px;
+            width: 14px;
+          }
+          
+          .avatar-upload .avatar-edit .upload-image:after {
+            content: url('/assets/edit.svg');
+          }
+          
+          .avatar-upload .avatar-edit .remove-image:after {
+            content: url('/assets/close.svg');
+            left: 0px !important;
+          }
+          
+          .avatar-upload .avatar-preview {
+            width: 130px;
+            height: 130px;
+            position: relative;
+            border-radius: 100%;
+            overflow: hidden;
+            border: 4px solid #fff;
+            -webkit-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+            box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+            background-color: #D9D9D9;
+          }
+          
+          .avatar-upload .avatar-preview>div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          .editbutton
+          {
+          position: absolute;
+          position: absolute;
+          bottom: 7px;
+          left:94px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #3584CF;
+          border: #3584CF;
+          color: #fff;
+          width: 30px;
+          height: 30px;
+          }
+
+          label {
+            display: block;
+            padding-bottom: 10px;
+          }
+        
+         div span {
+            display: block;
+            padding-bottom: 10px;
+            font-weight: 600;           
+          }
+          
+
+
+
+          .mat-mdc-form-field {
+            margin-top: 16px;
+          }
+      
+
+      :host ::ng-deep .last-edited-step-1 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-1 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-2 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-2 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-2 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-2 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::after,
+      :host ::ng-deep .last-edited-step-3 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::before,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::after,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::before,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::after,
+      :host ::ng-deep .last-edited-step-4 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::before,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::after,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::before,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::after,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::before,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::after,
+      :host ::ng-deep .last-edited-step-5 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(11)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(11)::before, 
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(11)::after, 
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(13)::before,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(1)::after,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::before,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(3)::after,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::before,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(5)::after,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::before,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(7)::after,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::before,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(9)::after,
+      :host ::ng-deep .last-edited-step-6 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(11)::before, 
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(11)::after, 
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(13)::before,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(13)::after,
+      :host ::ng-deep .last-edited-step-7 .mat-horizontal-stepper-header-container .mat-step-header:nth-child(15)::before 
+      {
+    
+        border-top: 3px solid #198754!important;
+      }
+      ::ng-deep .mat-horizontal-stepper-header-container {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px  !important;
+        border-radius: 10px !important;
+        background-color: #ffffff !important;
+        /* height: 5rem !important; */
+    }
+    ::ng-deep .mat-horizontal-content-container {
+      overflow: hidden;
+      padding: 0 !important;
+      margin: 1rem 0;
+    }
+    
+    ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon {
+    margin-right: 0;
+    margin-left: 0;
+    }
+    .mat-stepper-horizontal {
+    margin-top: 8px;
+    background:none !important;
+    }
+    
+    :host::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+      font-weight: 500 !important;
+      color: #535353  !important;
+      margin-top: .5rem !important; 
+    }
+      
+      ::ng-deep .mat-horizontal-content-container {
+        overflow: hidden;
+        padding: 0 !important;
+        margin: 1rem 0;
+   
+ 
+    }
+
+    ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon {
+      margin-right: 0;
+      margin-left: 0;
+      /* height: 2rem !important;
+      width: 2rem !important; */
+  }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+    background:none !important;
+  }
+  
+  /* .mat-expansion-panel {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
+} */
+.card_accordion {
+  border-radius: 10px !important;
+  border: 2px solid rgba(218, 218, 218, 0.1);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+padding: 0 !important;
+  text-align: center;
+  width: 100%;
+  font-weight: 500 !important;
+  color: #636363 !important;
+  font-family: 'Lato' !important;
+}

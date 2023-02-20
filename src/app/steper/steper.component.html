@@ -1,0 +1,106 @@
+<mat-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Employee Personal Details</ng-template>
+      
+      <form [formGroup]="firstFormGroup" (ngSubmit)="selectionChange(1)" class="mt-3">
+        <!-- <input type="text"  formControlName="firstCtrl"> -->
+      <app-employee-details></app-employee-details>
+      <div class="d-flex justify-content-end">
+
+        <button type="submit" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext >Next</button>
+         </div>
+    </form>
+    </mat-step>
+
+    
+    <mat-step [stepControl]="secondFormGroup" >
+      <ng-template matStepLabel >Employee Service</ng-template>
+      <form [formGroup]="firstFormGroup" class="mt-3">
+    
+     <app-employee-service-details></app-employee-service-details>
+
+     <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious>Previous</button>
+      <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext (click)="selectionChange(2)">Next</button>
+    </div>
+      </form> 
+      
+     
+    </mat-step>
+
+
+
+
+    <mat-step [stepControl]="thirdFormGroup" [optional]="false">
+     <form action="">
+      <ng-template matStepLabel>Employee Address</ng-template>
+      <app-address></app-address>
+     
+      <div class="d-flex justify-content-end">
+       <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious >Previous</button>
+       <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext (click)="selectionChange(3)">Next</button>
+     </div>
+     </form>
+    </mat-step>
+
+
+
+      <mat-step [stepControl]="forthFormGroup"  >
+        <form [formGroup]="firstFormGroup" class="mt-3">
+          <ng-template matStepLabel>Employee Family Details</ng-template>
+        <app-family-details></app-family-details>
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          </mat-form-field> -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious>Previous</button>
+            <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext (click)="selectionChange(4)">Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+
+
+  
+
+
+    <mat-step [stepControl]="SavenFormGroup" [optional]="false">
+    <form action="">
+      <ng-template matStepLabel>Employee Bank Details</ng-template>
+      <app-bank-details></app-bank-details>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious >Previous</button>
+        <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext (click)="selectionChange(5)">Next</button>
+      </div>
+    </form>
+    </mat-step>
+
+    <mat-step [stepControl]="fifthFormGroup" >
+      <form [formGroup]="firstFormGroup" class="mt-3">
+        <ng-template matStepLabel>pay entitlement</ng-template>
+
+      <app-pay-entitlement></app-pay-entitlement>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious>Previous</button>
+        <button type="button" class="btn btn-primary  ms-2" mat-raised-button color="primary" matStepperNext (click)="selectionChange(6)">Next</button>
+      </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="SixFormGroup" [optional]="false">
+      <form [formGroup]="firstFormGroup" class="mt-3">
+        <ng-template matStepLabel>Employee Document</ng-template>
+        <app-document></app-document>
+        <div class="d-flex justify-content-end">
+          
+          <button type="button" class="btn btn-outline-cancel ms-2" mat-stroked-button matStepperPrevious>Previous</button>
+          <button type="button" class="btn btn-success ms-2" mat-stroked-button (click)="selectionChange(7)" >Submit</button>
+          <button type="reset" class="btn  btn-outline-cancel ms-2" mat-stroked-button color="secondary" >Refresh</button>
+        </div>
+      </form>
+      </mat-step>
+
+
+
+  </mat-stepper>

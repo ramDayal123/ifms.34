@@ -1,0 +1,370 @@
+<div class="content-wrapper"*ngIf="drmaster">
+    <form [formGroup]="dr_Master" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <h3>Create New DR</h3>
+            <hr>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Pay Commission</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="Pay_Commission">
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && f['Pay_Commission'].errors" class="text-danger">
+                        <div *ngIf="f['Pay_Commission'].errors?.['required']">
+                            This feild is required
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Entitlement Status</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="Entitlement_Status">
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && f['Entitlement_Status'].errors" class="text-danger">
+                        <div *ngIf="f['Entitlement_Status'].errors?.['required']">
+                            This feild is required
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>DR Rate %</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="DR_Rate" maxlength="3">
+                    <mat-error *ngIf="f['DR_Rate'].errors" class="text-danger">
+                        <div *ngIf="f['DR_Rate'].errors?.['required']">
+                            This feild is required
+                        </div>
+                        <div *ngIf="f['DR_Rate']?.touched && f['DR_Rate'].errors?.['pattern']">
+                            Enter only Number
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Order No</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="Order_No">
+                    <mat-error *ngIf="f['Order_No'].errors" class="text-danger">
+                        <div *ngIf="f['Order_No'].errors?.['required']">
+                            This feild is required
+                        </div>
+                        <div *ngIf="f['Order_No']?.touched && f['Order_No'].errors?.['pattern']">
+                            Enter only Number
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Order Date</mat-label>
+                    <input matInput [matDatepicker]="OrderDate" (click)="OrderDate.open()" (focus)="OrderDate.open()"
+                        formControlName="Order_Date" name="Order_Date" autocomplete="off" [max]="getToday()"
+                        readonly="">
+                    <mat-datepicker-toggle matSuffix [for]="OrderDate"></mat-datepicker-toggle>
+                    <mat-datepicker #OrderDate></mat-datepicker>
+                    <mat-error *ngIf="submitted && f['Order_Date'].errors" class="text-danger">
+                        <div *ngIf="f['Order_Date'].errors?.['required']">
+                            This feild is required
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+
+                <mat-form-field class="w-100">
+                    <mat-label>w.e.f DR date</mat-label>
+                    <input matInput [matDatepicker]="picker" (click)="picker.open()" (focus)="picker.open()"
+                        formControlName="DR_date" name="DR_date" autocomplete="off">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="submitted && f['DR_date'].errors" class="text-danger">
+                        <div *ngIf="f['DR_date'].errors?.['required']">
+                            This feild is required
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+
+
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+
+                <div class="space"><mat-label>Status</mat-label>
+                    <mat-slide-toggle color="primary" formControlName="Status"(change)="onChange($event)">
+                       {{status}}
+
+                    </mat-slide-toggle>
+                </div>
+
+            </div>
+
+            <div class="row align-item-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12">
+                    <div class="float-end">
+                        <button mat-button mat-dialog-close class="btn btn-outline-cancel"
+                            mat-stroked-button>Cancel</button>
+                        <button class="btn btn-primary  ms-2" mat-raised-button color="primary">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="content-wrapper" id="{{message}}" *ngIf="id===2">
+    <form [formGroup]="dr_Master" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="align-item-center">               
+                <span class="align-items-end" style="float:right;">                                     
+                <button mat-dialog-close class="btn-close" aria-label="Close"></button></span> <h3>Request Confirmation </h3>
+            </div>                                
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Remarks</mat-label>
+                  <textarea matInput placeholder="Type your comments here" rows="6"></textarea>
+                </mat-form-field>            
+            <div class="row align-item-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12">
+                    <div class="float-end">
+                        <button class="btn btn-danger" mat-raised-button color="warn">Reject</button>                       
+                        <button class="btn btn-tertiary ms-2" mat-raised-button color="tertiary">Revert</button>
+                        <button class="btn btn-success ms-2" mat-raised-button>Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="content-wrapper cnfrmDialogStyl" *ngIf="id===4" >
+    <div class="">
+        <span class="text-center">
+           <div class="circle text-center ">
+              <mat-icon>done</mat-icon>
+           </div>
+           <h3 class="text-success mt-3">Successful</h3>
+        </span>
+
+    </div>
+    <p class="text-center">Reference id  <b>{{reqId}}</b>  has been {{generated}} successfully</p>    
+    <p class="text-center" *ngIf="aid==='56956'">PPO number <b>{{random}}</b> has been generated </p>    
+    <div class="">
+                
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12 btnStyle">
+                <button *ngIf="aid!=='56956'" mat-dialog-close  class="btn btn-primary btn-lg" aria-label="Close" (click)="finalclose()">OK</button> &nbsp;&nbsp;
+                <button *ngIf="aid==='56956'" mat-dialog-close  class="btn btn-primary btn-lg" aria-label="Close" (click)="Download_PDF()">Save as PDF</button>  
+                 
+        </div>
+    </div>
+</div>
+
+
+
+<div class="content-wrapper" id="{{message}}" *ngIf="id==1">
+
+    <form [formGroup]="dr_Master" (ngSubmit)="onSubmit()">
+    
+            <div class="align-item-center">               
+                <span class="align-items-end" style="float:right;">                                     
+                <button mat-dialog-close class="btn-close" aria-label="Close"></button></span> <h3>{{message}}</h3>
+            </div> 
+               <hr>                             
+            <div class="card-body">
+                <div class="row mList" *ngFor="let data of datalist">
+                  <div class="col">
+                      <h6>{{data.actionTaken === 'CRE' ? 'INITIATED' : 'FORWARDED'}} </h6>
+                  </div>
+                  <div class="col">
+                      <h6>{{data.displayName}}</h6><p class="f-12 mt-2 mb-0">{{data.roleName}}</p><p class="f-12">{{data.levelType}}</p> 
+                  </div>
+                  <div class="col">
+                      <h6>{{data.remarks}}
+                      </h6>
+                  </div>
+                  <div class="col">
+                      <h6>{{data.modifiedDt | date}}</h6>
+                  </div>
+                </div>
+            </div>  
+             <hr>         
+            <div class="row align-item-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12">
+                    <div class="float-end">
+                        <button mat-button mat-dialog-close class="btn btn-outline-cancel" mat-stroked-button>Cancel</button>
+                        <button class="btn btn-primary  ms-2" mat-dialog-close mat-raised-button color="primary">Okay</button>
+                    </div>
+                </div>
+            </div>
+       
+    </form>
+</div>
+
+<!-- ADD SERVICE RECORD POPUP -->
+<div class="content-wrapper" id="{{message}}" *ngIf="id==6">
+    <form [formGroup]="serviceRecordForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="align-item-center">               
+                <span class="align-items-end" style="float:right;">                                     
+                <button mat-dialog-close class="btn-close" aria-label="Close"></button></span> <h3>{{message}}</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Service Category</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="category" (selectionChange)="getServiceSubCategory($event.value)">
+                     <mat-option *ngFor="let obj of serviceCatData" [value]="obj.serviceCategoryId">{{obj.serviceCategoryNameEn}}</mat-option>                       
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Service Sub Category</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="subCategory">
+                        <mat-option *ngFor="let items of serviceSubCatData" value={{items.serviceSubCategoryId}}>{{items.subServiceCategoryNameEn}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Service Length</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="serviceLength" maxlength="3">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Qualifying Service(Other than state government service)</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="qualifyingService">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Non Qualifying Service</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="nonQualifyingService">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Total Qualifying Service</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="totalQualifyService">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-0">
+                <mat-label>DE Status</mat-label> 
+                <mat-radio-group aria-label="Select an option" formControlName="de_Status" class="ms-3">    
+                    <mat-radio-button color="primary" value="1" class="mt-3"  (change)="showHideFields(1)">Yes</mat-radio-button>
+                    <mat-radio-button color="primary" value="0" class="ms-3"  (change)="showHideFields(0)">No</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 " *ngIf="isDeStatus">
+                <mat-form-field class="w-100">
+                    <mat-label>Type Of DE</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="deType">
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 " *ngIf="isDeStatus">                      
+                <mat-form-field class="w-100">  
+                    <mat-label>DE Start Date - DE End Date</mat-label>                                         
+                    <mat-date-range-input [rangePicker]="FromDate">
+                      <input matStartDate formControlName="start_Date" readonly >
+                      <input matEndDate formControlName="end_Date" readonly>
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="FromDate"></mat-datepicker-toggle>
+                    <mat-date-range-picker #FromDate></mat-date-range-picker>                                  
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6" *ngIf="isDeStatus">
+                <mat-label>Penalty</mat-label>
+                <mat-radio-group aria-label="Select an option" class="ms-3" formControlName="penalty">
+                    <mat-radio-button color="primary" value="1"class="mt-3"  (change)="showHideRemark(1)">Yes</mat-radio-button>
+                    <mat-radio-button color="primary" value="0" class="ms-3" (change)="showHideRemark(0)">No</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3" *ngIf="isPenalty">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Remarks</mat-label>
+                    <textarea matInput placeholder="Type your comments here" rows="4"></textarea>
+                </mat-form-field> 
+            </div> 
+            <div class="row align-item-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12">
+                    <div class="float-end">
+                        <button mat-button mat-dialog-close class="btn btn-outline-cancel mr-5" mat-stroked-button>Cancel</button>
+                        <button class="btn btn-primary" mat-dialog-close mat-raised-button color="primary">Add Service Records</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- ADD LOAN AND ADVANCE POPUP -->
+<div class="content-wrapper" id="{{message}}" *ngIf="id==7">
+    <form [formGroup]="loanAdvanceForm">
+        <div class="row">
+            <div class="align-item-center">               
+                <span class="align-items-end" style="float:right;">                                     
+                <button mat-dialog-close class="btn-close" aria-label="Close"></button></span> <h3>{{message}}</h3>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Loan/Advance Type</mat-label>
+                    <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="loanType">
+                        <mat-option value="two">Select Loan Type</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Commencement Of Loan</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="loanCommencement" (click)="picker.open()"
+                    (focus)="picker.open()">                                        
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>                                          
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Duration Of Loan (in months)</mat-label>
+                    <input matInput placeholder="Enter Duration Of Loan (in months)" formControlName="loanDuration">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Sanction Amount</mat-label>
+                    <input matInput placeholder="Enter Sanction Amount" formControlName="sanctionAmt">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Amount Paid</mat-label>
+                    <input matInput placeholder="Enter Amount Paid" formControlName="amountPaid">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
+                <mat-form-field class="w-100">
+                    <mat-label>Balance Amount</mat-label>
+                    <input matInput placeholder="Enter Balance Amount" formControlName="balanceAmt">
+                </mat-form-field>
+            </div>                  
+            <div class="row align-item-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-12">
+                    <div class="float-end">
+                        <button mat-button mat-dialog-close class="btn btn-outline-cancel mr-5" mat-stroked-button>Cancel</button>
+                        <button class="btn btn-primary" mat-dialog-close mat-raised-button color="primary">Add Advance</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

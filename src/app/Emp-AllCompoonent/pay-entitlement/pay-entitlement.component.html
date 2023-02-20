@@ -1,0 +1,420 @@
+<section class="content">
+    <div class="p-4">
+        <div class="p-3">
+            <legend class="mb-3">Pay Entitlement</legend>
+            <form [formGroup]="PayEntitlement" (click)=" OnSubmit()">
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Service Category </mat-label>
+                            <mat-select matNativeControl  (selectionChange)="getSubServiceCategory($event)" formControlName="service_Category">
+                                <mat-option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}> {{mst.SRVC_CAT_NAME_EN}} </mat-option>
+                              </mat-select>
+                              
+                        </mat-form-field>
+                     
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Sub Service Category </mat-label>
+                            <mat-select matNativeControl  formControlName="serviceSub_Category">
+                                <mat-option *ngFor="let mst of SubServiceCategorydata" value={{mst.SRVC_SUBCAT_ID}}>
+                                  {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                </mat-option>
+                              </mat-select>
+                
+                        </mat-form-field>
+                       
+                    </div>
+
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Designation </mat-label>
+                        <mat-select matNativeControl formControlName="Designation">
+                          <mat-option *ngFor="let mst of Designationdata" value={{mst.DESG_ID}}>{{mst.DESG_DESC_EN}}</mat-option>
+                        </mat-select>
+            
+                    </mat-form-field>
+                       
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Pay Commission</mat-label>
+                            <mat-select matNativeControl  formControlName="Commission">
+                                <mat-option *ngFor="let mst of PayCommisiondata" value={{mst.PAY_COMMISION_ID}}>
+                                  {{mst.PAY_COMM_NAME_EN}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                       
+                    </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                      <mat-form-field class="w-100" >
+                        <mat-label>Date of 7th Pay opted date </mat-label>
+                        <input matInput [matDatepicker]="picker2" readonly="" readonly="" formControlName="PayOptedDate"
+                            [ngClass]="{'is-invalid':submitted && PayEntitlement.controls['PayOptedDate'].errors}">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                        <mat-hint *ngIf="submitted && PayEntitlement.controls['PayOptedDate'].errors" class="text-danger">
+                            <div *ngIf="submitted && PayEntitlement.controls['PayOptedDate'].errors['required']">
+                                Please Enter Date of 7th Pay opted date
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                      <mat-form-field class="w-100" >
+                        <mat-label>Date of Entry in Existing Pay Band & Grade Pay</mat-label>
+                        <input matInput [matDatepicker]="picker3" readonly="" readonly="" formControlName="Grade_Pay"
+                            [ngClass]="{'is-invalid':submitted && PayEntitlement.controls['Grade_Pay'].errors}">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                        <mat-hint *ngIf="submitted && PayEntitlement.controls['Grade_Pay'].errors" class="text-danger">
+                            <div *ngIf="submitted && PayEntitlement.controls['Grade_Pay'].errors['required']">
+                                Please Enter Date of Entry in Existing Pay Band & Grade Pay
+                            </div>
+                        </mat-hint>
+                    </mat-form-field>
+                    </div>
+
+                </div>
+
+                <div class="row mt-2">
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Pay Level/Pay Scale/Pay level</mat-label>
+                        <mat-select matNativeControl  formControlName="HRAData">
+                            <mat-option >level 1</mat-option>
+                            <mat-option >level 2</mat-option>
+                          </mat-select>
+            
+                    </mat-form-field>
+                </div>
+                
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                  <mat-form-field class="w-100" >
+                    <mat-label>Date of present Pay Scale</mat-label>
+                    <input matInput [matDatepicker]="picker4" readonly="" readonly="" formControlName="present_PayScale"
+                        [ngClass]="{'is-invalid':submitted && PayEntitlement.controls['present_PayScale'].errors}">
+                    <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>
+                    <mat-hint *ngIf="submitted && PayEntitlement.controls['present_PayScale'].errors" class="text-danger">
+                        <div *ngIf="submitted && PayEntitlement.controls['present_PayScale'].errors['required']">
+                            Please Enter Date of present Pay Scale
+                        </div>
+                    </mat-hint>
+                </mat-form-field>
+              </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                           
+                            <mat-select matNativeControl   formControlName="gradePay">
+                                    <mat-option value="">---- Grade Pay ----</mat-option>
+                                    <mat-option value="">1</mat-option>
+                                    <mat-option value="">1</mat-option>
+                                    <mat-option value="">1</mat-option>
+                                  </mat-select>
+                
+                        </mat-form-field>
+                    </div>
+                   
+                    
+                </div>
+
+        
+                <div class="row mt-2">
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>Basic Pay</mat-label>
+                        <mat-select matNativeControl   formControlName="BasicPay">
+                                <mat-option value="" selected>----- Select Basic Pay -----</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                                <mat-option value="">1</mat-option>
+                              </mat-select>
+            
+                    </mat-form-field>
+                </div>
+
+
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>HoA</mat-label>
+                            <input matInput formControlName="HoA" placeholder="fbgdfgjf" >
+                            <mat-hint *ngIf="submitted && PayEntitlement.controls['HoA'].errors"
+                              class="text-danger">
+                              <div
+                                  *ngIf="submitted && PayEntitlement.controls['HoA'].errors['required']">
+                                  Please Enter Branch Name
+                              </div>
+                             </mat-hint>
+                        </mat-form-field>
+                       
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>DA Rate</mat-label>
+                            <mat-select matNativeControl  formControlName="Darate">
+                                <mat-option *ngFor="let mst of DAdata" value={{mst.DA_RATE_ID}}>{{mst.DA_RATE}}
+                                </mat-option>
+                              </mat-select>
+                
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                        <mat-form-field class="w-100">
+                            <mat-label>Govt Quarter</mat-label>
+                            <mat-select matNativeControl  formControlName="GovtQuarter">
+                                <!-- <mat-option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                      {{mst.SRVC_CAT_CD_NAME_EN}}
+                                  </mat-option> -->
+                              </mat-select>
+                
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                      <mat-form-field class="w-100">
+                          <mat-label>House Rent Allowance</mat-label>
+                          <mat-select matNativeControl  formControlName="HRAData">
+                              <mat-option *ngFor="let mst of HRAData" value={{mst.CITY_CLASS_ID}}>{{mst.RATE}}
+                              </mat-option>
+                            </mat-select>
+              
+                      </mat-form-field>
+                  </div>
+                  
+
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 ">
+                    <mat-form-field class="w-100">
+                        <mat-label>City Compensatory Allowance</mat-label>
+                        <mat-select matNativeControl  formControlName="city_compensatory">
+                            <mat-option >level 1</mat-option>
+                            <mat-option >level 2</mat-option>
+                          </mat-select>
+            
+                    </mat-form-field>
+                </div>
+                </div>
+
+
+                <div class="row mt-2">
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                    <mat-form-field class="w-100" >
+                      <mat-label>NPA</mat-label>
+                      <input matInput pattern="[a-zA-Z ]*"  formControlName="NPA" >
+                  </mat-form-field>
+                 </div>
+
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                <mat-form-field class="w-100" >
+                  <mat-label>GPF</mat-label>
+                  <input matInput pattern="[a-zA-Z ]*"  formControlName="GPF" >
+                 </mat-form-field>
+                </div>  
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                  <mat-form-field class="w-100" >
+                    <mat-label>NPS</mat-label>
+                    <input matInput pattern="[a-zA-Z ]*"  formControlName="NPS" >
+                   </mat-form-field>
+                  </div> 
+
+
+                </div>
+
+
+                <div class="row mt-2">
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                    <mat-form-field class="w-100" >
+                      <mat-label>SI</mat-label>
+                      <input matInput pattern="[a-zA-Z ]*"  formControlName="si" >
+                  </mat-form-field>
+                 </div>
+
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                <mat-form-field class="w-100" >
+                  <mat-label>Income tax</mat-label>
+                  <input matInput pattern="[a-zA-Z ]*"  formControlName="income_tax" >
+                 </mat-form-field>
+                </div>  
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                  <mat-form-field class="w-100" >
+                    <mat-label>Professional Tax</mat-label>
+                    <input matInput pattern="[a-zA-Z ]*"  formControlName="Professional_Tax" >
+                   </mat-form-field>
+                  </div> 
+
+
+                </div>
+
+                <div class="row mt-2">
+                  <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                    <mat-form-field class="w-100" >
+                      <mat-label>Other</mat-label>
+                      <input matInput pattern="[a-zA-Z ]*"  formControlName="Other" >
+                  </mat-form-field>
+                 </div>
+
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                <mat-form-field class="w-100" >
+                  <mat-label>Corp Details</mat-label>
+                  <input matInput pattern="[a-zA-Z ]*"  formControlName="Corp_Details" >
+                 </mat-form-field>
+                </div>  
+
+                <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 "> 
+                  <mat-form-field class="w-100" >
+                    <mat-label>Professional Tax</mat-label>
+                    <input matInput pattern="[a-zA-Z ]*"  formControlName="Name" >
+                   </mat-form-field>
+                  </div>  -->
+
+
+                </div>
+
+
+               <!-- filedset -->
+
+      <div class="Row" style="padding-top: 10px;">
+        <label class="bg-light-blue" style=" font-weight: bold;">
+          <div class="section-title">
+            <p>Group Name Details</p>
+          </div>
+        </label>
+      </div>
+
+        <div class="Row" style="padding-top: 10px;">
+          <label class=" bg-light-blue" style=" font-weight: bold;">
+            <div class="section-title">
+              <u><p>Earning & Deduction Details</p></u>
+            </div>
+          </label>
+        </div>
+   
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Earning Component</th>
+              </tr>
+              <tr>
+                <th>Sr.No.</th>
+                <th>Pay Head Name</th>
+                <th>Pay Head Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Basic Pay/Band Pay</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Grade Pay</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Dearness Allowance</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>House Rent Allowance</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <a routerLink="">
+            <u>Add Component</u>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Deduction Component</th>
+              </tr>
+              <tr>
+                <th>Sr.No.</th>
+                <th>Pay Head Name</th>
+                <th>Pay Head Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>GPF</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>NPS Employee Contribution</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>SI</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Income Tax</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <a routerLink="">Add Component</a>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Net Earning</th>
+              <th scope="col">Net Deduction</th>
+              <th scope="col">Net Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+              <!-- <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary ms-2" mat-raised-button (click)=" OnSubmit()">Save</button>
+                <button class="btn btn-success ms-2" mat-raised-button> Next</button>
+              </div> -->
+
+              <!-- <div class="text-center mt-4">
+                <button class="btn btn-primary waves-effect ms-2" mat-raised-button
+                (click)=" OnSubmit()">  Save As Draft</button>
+                <button type="button" class="btn btn-primary ms-2" mat-raised-button> Next &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </button>
+              </div> -->
+                <!-- <button class="btn btn-danger ms-2" mat-raised-button> Cancel</button> -->
+           <!-- <app-emp-button></app-emp-button> -->
+            </form>
+          </div>
+    </div>
+
+
+</section>
